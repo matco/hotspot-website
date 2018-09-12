@@ -1,0 +1,24 @@
+<div class="nice-box">
+	<h2>Login</h2>
+	<form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+		<div [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+			<mat-form-field class="mat-block">
+				<input matInput type="text" name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="E-mail">
+				<mat-error *ngIf="f.submitted && !email.valid">E-mail is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+			<mat-form-field class="mat-block">
+				<input matInput type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password">
+				<mat-error *ngIf="f.submitted && !password.valid">Password is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div>
+			<button mat-raised-button [disabled]="loading">Login</button>
+			<img *ngIf="loading" src="assets/loading.png" />
+			<p>
+				<a [routerLink]="['/register']">Don't have an account? Register!</a>
+			</p>
+		</div>
+	</form>
+</div>

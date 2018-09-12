@@ -1,0 +1,4 @@
+mat-sidenav-container {
+	height: calc(100% - 4rem);
+	box-sizing: border-box;
+}

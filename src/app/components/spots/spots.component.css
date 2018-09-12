@@ -1,0 +1,28 @@
+#spots {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	position: relative;
+}
+h3 {
+	margin: 0;
+	padding: 0.5rem;
+}
+.mat-list-item.selected {
+	background-color: #bbb;
+}
+.mat-list-item:hover .action {
+	visibility: visible;
+}
+.action {
+	position: absolute;
+	right: 0.1rem;
+	visibility: hidden;
+	opacity: 0.5;
+}
+.action:hover {
+	opacity: 1;
+}
+.action_edit {
+	right: 2rem;
+}

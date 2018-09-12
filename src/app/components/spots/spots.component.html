@@ -1,0 +1,11 @@
+<div id="spots">
+	<h3>Spots</h3>
+	<mat-nav-list>
+		<mat-list-item *ngFor="let spot of spots">
+			<span>{{spot.name}}</span>
+			<a mat-icon-button [routerLink]="['/spots', spot.uuid, {stash: selectedStash.uuid}]" class="action action_edit" matTooltip="Edit spot"><mat-icon><i class="material-icons">edit</i></mat-icon></a>
+			<button mat-icon-button (click)="deleteSpot(spot)" class="action action_delete" matTooltip="Delete spot"><mat-icon><i class="material-icons">delete</i></mat-icon></button>
+		</mat-list-item>
+	</mat-nav-list>
+	<a class="mat-fab-bottom-right" mat-fab [routerLink]="['/spot', {stash: selectedStash.uuid}]" matTooltip="Create a new spot"><mat-icon><i class="material-icons">add</i></mat-icon></a>
+</div>

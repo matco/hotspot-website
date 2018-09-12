@@ -1,0 +1,11 @@
+<div id="stashs">
+	<h3>Stashs</h3>
+	<mat-nav-list>
+		<mat-list-item *ngFor="let stash of stashs" [class.selected]="stash.uuid === selectedStash?.uuid">
+			<a matLine [routerLink]="['/home', {stash: stash.uuid}]" class="label">{{stash.name}}</a>
+			<a mat-icon-button [routerLink]="['/stashs', stash.uuid]" class="action action_edit" matTooltip="Edit stash"><mat-icon><i class="material-icons">edit</i></mat-icon></a>
+			<button mat-icon-button (click)="deleteStash(stash)" class="action action_delete" matTooltip="Delete stash"><mat-icon><i class="material-icons">delete</i></mat-icon></button>
+		</mat-list-item>
+	</mat-nav-list>
+	<a class="mat-fab-bottom-right" mat-fab [routerLink]="['/stash']" matTooltip="Create a new stash"><mat-icon><i class="material-icons">add</i></mat-icon></a>
+</div>

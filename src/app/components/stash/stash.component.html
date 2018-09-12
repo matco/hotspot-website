@@ -1,0 +1,22 @@
+<div class="content">
+	<h2>Stash</h2>
+	<form name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate class="large-form">
+		<div [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+			<mat-form-field>
+				<input matInput type="text" name="name" [(ngModel)]="stash.name" #name="ngModel" required placeholder="Name">
+				<mat-error *ngIf="f.submitted && !name.valid">Name is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div [ngClass]="{ 'has-error': f.submitted && !description.valid }">
+			<mat-form-field>
+				<input matInput type="text" class="form-control" name="description" [(ngModel)]="stash.description" #description="ngModel" placeholder="Description">
+				<mat-error *ngIf="f.submitted && !description.valid">Description</mat-error>
+			</mat-form-field>
+		</div>
+		<div>
+			<a mat-raised-button [routerLink]="['/']">Cancel</a>
+			<button mat-raised-button [disabled]="loading">Save</button>
+			<img *ngIf="loading" src="assets/loading.png" />
+		</div>
+	</form>
+</div>

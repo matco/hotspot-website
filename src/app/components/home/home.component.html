@@ -1,0 +1,4 @@
+<div class="container">
+	<app-stashs *ngIf="stashs" [stashs]="stashs" [selectedStash]="selectedStash"></app-stashs>
+	<app-spots *ngIf="selectedStash" [spots]="spots" [selectedSpot]="selectedSpot" [selectedStash]="selectedStash"  class="child"></app-spots>
+</div>
