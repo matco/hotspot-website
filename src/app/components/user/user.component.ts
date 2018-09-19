@@ -1,12 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { MatDialog } from '@angular/material';
+
 import { User } from '../../models/user';
 import { PasswordUpdate } from '../../models/password-update';
 
 import { MeService } from '../../services/me.service';
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../services/alert.service';
+
+import { UserDeletionDialog } from '../../dialogs/user_deletion.dialog';
 
 @Component({
 	moduleId: module.id,
@@ -26,7 +30,8 @@ export class UserComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private meService: MeService,
 		private userService: UserService,
-		private alertService: AlertService) {}
+		private alertService: AlertService,
+		private dialog: MatDialog) {}
 
 	ngOnInit() {
 		this.subscription = this.activatedRoute.params.subscribe(parameters => {
@@ -72,5 +77,22 @@ export class UserComponent implements OnInit, OnDestroy {
 					this.alertService.error(error);
 					this.loading = false;
 				});
+	}
+
+	deleteAccount() {
+		this.dialog.open(UserDeletionDialog).afterClosed().subscribe(result => {
+			if(result) {
+				this.userService
+					.delete(this.user.handle)
+					.subscribe(
+						data => {
+							this.alertService.success('Your account has been deleted successfully', true);
+							this.router.navigate(['/login']);
+						},
+						error => {
+							this.alertService.error(error);
+						});
+			}
+		});
 	}
 }

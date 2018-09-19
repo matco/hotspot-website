@@ -21,9 +21,10 @@
 						<mat-error *ngIf="detailsForm.submitted && !email.valid">E-mail required</mat-error>
 					</mat-form-field>
 				</div>
-				<div>
+				<div class="button-row">
 					<a mat-raised-button [routerLink]="['/']">Cancel</a>
 					<button mat-raised-button [disabled]="loading">Save</button>
+					<button type="button" mat-raised-button [disabled]="loading" color="warn" (click)="deleteAccount()">Delete account</button>
 					<img *ngIf="loading" src="assets/loading.png" />
 				</div>
 			</form>

@@ -25,6 +25,7 @@ import { AlertComponent } from './directives/alert.component';
 
 import { StashDeletionDialog } from './dialogs/stash_deletion.dialog';
 import { SpotDeletionDialog } from './dialogs/spot_deletion.dialog';
+import { UserDeletionDialog } from './dialogs/user_deletion.dialog';
 
 import { NetworkErrorComponent } from './components/network-error/network-error.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -72,11 +73,13 @@ import { SpotComponent } from './components/spot/spot.component';
 		SpotComponent,
 		SpotPipe,
 		StashDeletionDialog,
-		SpotDeletionDialog
+		SpotDeletionDialog,
+		UserDeletionDialog
 	],
 	entryComponents: [
 		StashDeletionDialog,
-		SpotDeletionDialog
+		SpotDeletionDialog,
+		UserDeletionDialog
 	],
 	providers: [
 		{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
