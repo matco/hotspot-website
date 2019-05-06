@@ -9,5 +9,5 @@ export enum AppMode {
 export class AppService {
 	constructor() {}
 	public static APP_MODE: AppMode = AppMode.DEV;
-	public static API_URL = 'http://localhost:8080';
+	public static API_URL = '/api';
 }
