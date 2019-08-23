@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-	<h1>Hotspot</h1>
+	<h1>
+		<a [routerLink]="['/home']">Hotspot</a>
+	</h1>
 	<span class="spacer"></span>
 	<a *ngIf="user" mat-mini-fab [routerLink]="['/users', user.handle]" matTooltip="Edit your account"><mat-icon><i class="material-icons">account_circle</i></mat-icon></a>
 	<a *ngIf="user" mat-mini-fab (click)="logout()" matTooltip="Logout"><mat-icon><i class="material-icons">exit_to_app</i></mat-icon></a>
