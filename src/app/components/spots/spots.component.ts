@@ -10,6 +10,7 @@ import { AlertService } from '../../services/alert.service';
 import { SpotService } from '../../services/spot.service';
 
 import { SpotDeletionDialog } from '../../dialogs/spot_deletion.dialog';
+import { MapService } from 'app/services/map.service';
 
 @Component({
 	moduleId: module.id,
@@ -26,7 +27,8 @@ export class SpotsComponent {
 		private router: Router,
 		private dialog: MatDialog,
 		private alertService: AlertService,
-		private spotService: SpotService) {}
+		private spotService: SpotService,
+		public mapService: MapService) {}
 
 	deleteSpot(spot: Spot): void {
 		this.dialog.open(SpotDeletionDialog).afterClosed().subscribe(result => {

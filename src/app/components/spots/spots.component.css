@@ -26,3 +26,13 @@ h3 {
 .action_edit {
 	right: 2rem;
 }
+.index {
+	background-color: crimson;
+	color: white;
+	border-radius: 10px;
+	padding: 0.5rem;
+	margin-right: 1rem;
+}
+.index.selected {
+	background-color: cornflowerblue;
+}

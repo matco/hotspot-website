@@ -29,10 +29,9 @@
 			<input type="file" accept="image/*;capture=camera" class="form-control" name="picture" [(ngModel)]="spot.picture" #description="ngModel" placeholder="Picture">
 		</div>-->
 		<div>
-			<a mat-raised-button [routerLink]="['/']">Cancel</a>
+			<a mat-raised-button [routerLink]="['/home', {stash: stash?.uuid}]">Cancel</a>
 			<button mat-raised-button [disabled]="loading">Save</button>
 			<img *ngIf="loading" src="assets/loading.png" />
 		</div>
 	</form>
 </div>
-

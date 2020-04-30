@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -48,6 +50,7 @@ import { StashsComponent } from './components/stashs/stashs.component';
 import { StashComponent } from './components/stash/stash.component';
 import { SpotsComponent } from './components/spots/spots.component';
 import { SpotComponent } from './components/spot/spot.component';
+import { MapService } from './services/map.service';
 
 @NgModule({
 	imports: [
@@ -56,6 +59,7 @@ import { SpotComponent } from './components/spot/spot.component';
 		RoutingModule,
 		FormsModule,
 		BrowserAnimationsModule,
+		MatChipsModule,
 		MatDialogModule,
 		MatIconModule,
 		MatInputModule,
@@ -65,7 +69,8 @@ import { SpotComponent } from './components/spot/spot.component';
 		MatSidenavModule,
 		MatListModule,
 		MatTabsModule,
-		MatTooltipModule
+		MatTooltipModule,
+		GoogleMapsModule
 	],
 	declarations: [
 		AppComponent,
@@ -100,7 +105,8 @@ import { SpotComponent } from './components/spot/spot.component';
 		MeService,
 		UserService,
 		StashService,
-		SpotService
+		SpotService,
+		MapService
 	],
 	bootstrap: [AppComponent]
 })

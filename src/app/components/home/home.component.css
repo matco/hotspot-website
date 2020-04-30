@@ -17,3 +17,8 @@ app-spots {
 	background-color: white;
 	border-right: 2px solid #eee;
 }
+google-map {
+	width: 100%;
+	height: 100%;
+	order: 2;
+}

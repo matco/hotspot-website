@@ -1,4 +1,14 @@
 <div class="container">
 	<app-stashs *ngIf="stashs" [stashs]="stashs" [selectedStash]="selectedStash"></app-stashs>
-	<app-spots *ngIf="selectedStash" [spots]="spots" [selectedSpot]="selectedSpot" [selectedStash]="selectedStash"  class="child"></app-spots>
+	<app-spots *ngIf="selectedStash" [spots]="spots" [selectedSpot]="selectedSpot" [selectedStash]="selectedStash"></app-spots>
+	<google-map [hidden]="!selectedStash" [center]="center" [zoom]="4" width="100%" height="100%">
+		<map-marker *ngFor="let spot of spots; let i = index"
+			[position]="{lat :spot.latitude, lng: spot.longitude}"
+			[label]="mapService.generateLabel(i)"
+			[title]="spot.name"
+			[options]="{icon: spot.uuid === selectedSpot?.uuid ? 'assets/map-marker-blue.png' : 'assets/map-marker-red.png'}"></map-marker>
+		<map-info-window *ngIf="selectedSpot">
+			<strong>{{ selectedSpot.name }}</strong>
+		</map-info-window>
+	</google-map>
 </div>

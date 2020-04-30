@@ -1,8 +1,10 @@
 <div id="spots">
 	<h3>Spots</h3>
 	<mat-nav-list>
-		<mat-list-item *ngFor="let spot of spots">
-			<span>{{spot.name}}</span>
+		<mat-list-item *ngFor="let spot of spots; let i = index">
+			<a matLine [routerLink]="['/home', {stash: selectedStash.uuid, spot: spot.uuid}]" class="label">
+				<span class="index" [class.selected]="spot.uuid === selectedSpot?.uuid" [textContent]="mapService.generateLabel(i)"></span> {{spot.name}}
+			</a>
 			<a mat-icon-button [routerLink]="['/spots', spot.uuid, {stash: selectedStash.uuid}]" class="action action_edit" matTooltip="Edit spot"><mat-icon><i class="material-icons">edit</i></mat-icon></a>
 			<button mat-icon-button (click)="deleteSpot(spot)" class="action action_delete" matTooltip="Delete spot"><mat-icon><i class="material-icons">delete</i></mat-icon></button>
 		</mat-list-item>
