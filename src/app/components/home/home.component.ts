@@ -1,4 +1,5 @@
-import { forkJoin } from 'rxjs';
+import { combineLatest, of } from 'rxjs';
+import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +21,7 @@ import { SpotService } from '../../services/spot.service';
 })
 export class HomeComponent implements OnInit {
 	stashs: Stash[];
-	selectedStash: Stash;
+		selectedStash: Stash;
 	spots: Spot[];
 	selectedSpot: Spot;
 	center = {lat: 24, lng: 12};
@@ -36,40 +37,29 @@ export class HomeComponent implements OnInit {
 		public mapService: MapService) {}
 
 	ngOnInit() {
-		this.subscription = this.activatedRoute.params.subscribe(parameters => {
-			if(parameters['stash']) {
-				const stashUuid = parameters['stash'];
-				if(!this.selectedStash || this.selectedStash.uuid !== stashUuid) {
-					forkJoin({
-						stash : this.stashService.get(stashUuid),
-						spots : this.stashService.getSpots(stashUuid)
-					}).subscribe(result => {
-						//find where to center map before selecting stash
-						const bounds = new google.maps.LatLngBounds();
-						result.spots.forEach(s => bounds.extend({lat: s.latitude, lng: s.longitude}));
-						this.map.fitBounds(bounds);
-						this.selectedStash = result.stash;
-						this.spots = result.spots;
-					});
-				}
-				if(parameters['spot']) {
-					const spotUuid = parameters['spot'];
-					if(!this.selectedSpot || this.selectedSpot.uuid !== spotUuid) {
-						this.spotService.get(spotUuid).subscribe(spot => {
-							this.selectedSpot = spot;
-							this.center = {lat: spot.latitude, lng: spot.longitude};
-						});
-					}
-				}
-				else {
-					this.selectedSpot = undefined;
-				}
-			}
-			else {
-				this.selectedStash = undefined;
-			}
+		combineLatest(
+			this.stashService.all(),
+			this.activatedRoute.params.pipe(
+				map(parameters => parameters['stash'] as string),
+				distinctUntilChanged(),
+				switchMap(stashUuid => {
+					const $spots = stashUuid ? this.stashService.getSpots(stashUuid) : of([]);
+					return $spots.pipe(
+						map(spots => {
+							return {stashUuid, spots}
+						})
+					)
+				})
+			),
+			this.activatedRoute.params.pipe(
+				map(parameters => parameters['spot'] as string),
+				distinctUntilChanged()
+			)
+		).subscribe(([stashs, {stashUuid, spots}, spotUuid]) => {
+			this.stashs = stashs;
+			this.selectedStash = this.stashs.find(s => s.uuid == stashUuid);
+			this.spots = spots;
+			this.selectedSpot = this.spots.find(s => s.uuid == spotUuid);
 		});
-		this.stashService.all().subscribe(stashs => this.stashs = stashs);
 	}
-
 }
