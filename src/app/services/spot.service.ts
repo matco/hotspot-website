@@ -21,8 +21,8 @@ export class SpotService {
 		return this.http.get<Spot>(AppService.API_URL + '/spots/' + uuid);
 	}
 
-	save(spot: Spot) {
-		return this.http.put(AppService.API_URL + '/spots/' + spot.uuid, spot);
+	save(uuid: string, spot: Spot) {
+		return this.http.put(AppService.API_URL + '/spots/' + uuid, spot);
 	}
 
 	delete(uuid: string) {

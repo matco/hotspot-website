@@ -1,29 +1,47 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { MatDialog } from '@angular/material/dialog';
 
 import { User } from '../../models/user';
-import { PasswordUpdate } from '../../models/password-update';
 
 import { MeService } from '../../services/me.service';
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../services/alert.service';
 
 import { UserDeletionDialog } from '../../dialogs/user_deletion.dialog';
+import { matchingPasswords } from '../../directives/matching-passwords';
 
 @Component({
 	moduleId: module.id,
 	templateUrl: './user.component.html',
 	styleUrls: ['./user.component.css']
 })
-
 export class UserComponent implements OnInit, OnDestroy {
 
-	user: User = new User();
-	passwordUpdate: PasswordUpdate = new PasswordUpdate();
+	user: User;
 	subscription;
 	loading = false;
+
+	userForm = new FormGroup(
+		{
+			firstname: new FormControl('', [Validators.required]),
+			lastname: new FormControl('', [Validators.required]),
+			email: new FormControl('', [Validators.required, Validators.email])
+		}
+	);
+
+	passwordForm = new FormGroup(
+		{
+			currentPassword: new FormControl('', [Validators.required]),
+			newPassword: new FormControl('', [Validators.required]),
+			confirmPassword: new FormControl('', [Validators.required])
+		},
+		{
+			validators: matchingPasswords
+		}
+	);
 
 	constructor(
 		private router: Router,
@@ -36,7 +54,10 @@ export class UserComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.subscription = this.activatedRoute.params.subscribe(parameters => {
 			if(parameters['handle']) {
-				this.userService.get(parameters['handle']).subscribe(user => this.user = user);
+				this.userService.get(parameters['handle']).subscribe(user => {
+					this.user = user;
+					this.userForm.patchValue(user)
+				});
 			}
 			else {
 				this.alertService.error('No user specified');
@@ -51,8 +72,9 @@ export class UserComponent implements OnInit, OnDestroy {
 
 	saveDetails() {
 		this.loading = true;
+		const user = this.userForm.value;
 		this.userService
-			.update(this.user)
+			.update(this.user.handle, user)
 			.subscribe(
 				data => {
 					this.alertService.success('Your profile has been updated successfully', true);
@@ -66,15 +88,24 @@ export class UserComponent implements OnInit, OnDestroy {
 
 	changePassword() {
 		this.loading = true;
+		const passwordUpdate = {
+			currentPassword: this.passwordForm.controls['currentPassword'].value,
+			newPassword: this.passwordForm.controls['newPassword'].value,
+		}
 		this.meService
-			.changePassword(this.passwordUpdate)
+			.changePassword(passwordUpdate)
 			.subscribe(
 				data => {
 					this.alertService.success('Your password has been updated successfully', true);
 					this.router.navigate(['/']);
 				},
 				error => {
-					this.alertService.error(error);
+					if(error.status === 401) {
+						this.alertService.error('Current password is invalid');
+					}
+					else {
+						this.alertService.error('Unknown error');
+					}
 					this.loading = false;
 				});
 	}

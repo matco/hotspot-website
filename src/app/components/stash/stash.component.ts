@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Stash } from '../../models/stash';
 
@@ -12,9 +13,16 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class StashComponent implements OnInit, OnDestroy {
-	stash: Stash = new Stash();
 	subscription;
 	loading = false;
+
+	stash: Stash;
+	stashForm = new FormGroup(
+		{
+			name: new FormControl('', [Validators.required]),
+			description: new FormControl(),
+		}
+	);
 
 	constructor(
 		private router: Router,
@@ -25,7 +33,10 @@ export class StashComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.subscription = this.activatedRoute.params.subscribe(parameters => {
 			if(parameters['uuid']) {
-				this.stashService.get(parameters['uuid']).subscribe(stash => this.stash = stash);
+				this.stashService.get(parameters['uuid']).subscribe(stash => {
+					this.stash = stash;
+					this.stashForm.patchValue(stash);
+				});
 			}
 		});
 	}
@@ -45,11 +56,11 @@ export class StashComponent implements OnInit, OnDestroy {
 			this.loading = false;
 			this.alertService.error(error);
 		};
-		if(this.stash.uuid) {
-			this.stashService.save(this.stash).subscribe(okCallback, errorCallback);
+		if(this.stash) {
+			this.stashService.save(this.stash.uuid, this.stashForm.value).subscribe(okCallback, errorCallback);
 		}
 		else {
-			this.stashService.create(this.stash).subscribe(okCallback, errorCallback);
+			this.stashService.create(this.stashForm.value).subscribe(okCallback, errorCallback);
 		}
 	}
 }

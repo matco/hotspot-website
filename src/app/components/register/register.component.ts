@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { User } from '../../models/user';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../services/alert.service';
@@ -12,8 +11,16 @@ import { AlertService } from '../../services/alert.service';
 	styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-	user: User = new User();
 	loading = false;
+
+	registerForm = new FormGroup(
+		{
+			firstname: new FormControl('', [Validators.required]),
+			lastname: new FormControl('', [Validators.required]),
+			email: new FormControl('', [Validators.required, Validators.email]),
+			password: new FormControl('', [Validators.required]),
+		}
+	);
 
 	constructor(
 		private router: Router,
@@ -23,7 +30,7 @@ export class RegisterComponent {
 	register() {
 		this.loading = true;
 		this.userService
-			.create(this.user)
+			.create(this.registerForm.value)
 			.subscribe(
 				data => {
 					this.alertService.success('Registration successful', true);

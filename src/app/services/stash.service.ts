@@ -22,8 +22,8 @@ export class StashService {
 		return this.http.get<Stash>(AppService.API_URL + '/stashs/' + uuid);
 	}
 
-	save(stash: Stash) {
-		return this.http.put(AppService.API_URL + '/stashs/' + stash.uuid, stash);
+	save(uuid: string, stash: Stash) {
+		return this.http.put(AppService.API_URL + '/stashs/' + uuid, stash);
 	}
 
 	delete(uuid: string) {

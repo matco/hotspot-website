@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { AppService } from '../../services/app.service';
 import { AlertService } from '../../services/alert.service';
 import { TokenService } from '../../services/token.service';
-import { MeService } from '../../services/me.service';
 
 @Component({
 	selector: 'app-login',
@@ -13,21 +12,25 @@ import { MeService } from '../../services/me.service';
 })
 export class LoginComponent {
 
-	model: any = {};
 	loading = false;
 	returnUrl: string;
 
+	loginForm = new FormGroup(
+		{
+			email: new FormControl('', [Validators.required, Validators.email]),
+			password: new FormControl('', [Validators.required])
+		}
+	);
+
 	constructor(
 		private router: Router,
-		private appService: AppService,
 		private alertService: AlertService,
-		private tokenService: TokenService,
-		private meService: MeService) {}
+		private tokenService: TokenService) {}
 
 	login() {
 		this.loading = true;
 		this.tokenService
-			.get(this.model.email, this.model.password)
+			.get(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
 			.subscribe(
 				token => {
 					this.router.navigate(['/home', {reload : true}]);

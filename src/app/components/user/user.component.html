@@ -2,57 +2,48 @@
 	<h2>Profile</h2>
 	<mat-tab-group>
 		<mat-tab label="Details">
-			<form name="details" (ngSubmit)="detailsForm.form.valid && saveDetails()" #detailsForm="ngForm" novalidate class="large-form">
-				<div [ngClass]="{ 'has-error': detailsForm.submitted && !firstname.valid }">
-					<mat-form-field>
-						<input matInput type="text" name="firstname" [(ngModel)]="user.firstname" #firstname="ngModel" required placeholder="Firstname">
-						<mat-error *ngIf="detailsForm.submitted && !firstname.valid">First name is required</mat-error>
-					</mat-form-field>
-				</div>
-				<div [ngClass]="{ 'has-error': detailsForm.submitted && !lastname.valid }">
-					<mat-form-field>
-						<input matInput type="text" name="lastname" [(ngModel)]="user.lastname" #lastname="ngModel" required placeholder="Lastname">
-						<mat-error *ngIf="detailsForm.submitted && !lastname.valid">Last name is required</mat-error>
-					</mat-form-field>
-				</div>
-				<div [ngClass]="{ 'has-error': detailsForm.submitted && !email.valid }">
-					<mat-form-field>
-						<input matInput type="email" name="email" [(ngModel)]="user.email" #email="ngModel" required placeholder="E-mail">
-						<mat-error *ngIf="detailsForm.submitted && !email.valid">E-mail required</mat-error>
-					</mat-form-field>
-				</div>
+			<form [formGroup]="userForm" (ngSubmit)="saveDetails()" class="large-form">
+				<mat-form-field>
+					<input matInput type="text" formControlName="firstname" required placeholder="Firstname">
+					<mat-error *ngIf="userForm.controls['firstname'].errors?.required">First name is required</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput type="text" formControlName="lastname" required placeholder="Lastname">
+					<mat-error *ngIf="userForm.controls['lastname'].errors?.required">Last name is required</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput type="email" formControlName="email" required placeholder="Email">
+					<mat-error *ngIf="userForm.controls['email'].errors?.required">Email is required</mat-error>
+					<mat-error *ngIf="userForm.controls['email'].errors?.email">Email is not valid</mat-error>
+				</mat-form-field>
+
 				<div class="button-row">
 					<a mat-raised-button [routerLink]="['/']">Cancel</a>
-					<button mat-raised-button [disabled]="loading">Save</button>
+					<button mat-raised-button [disabled]="loading || userForm.invalid">Save</button>
 					<button type="button" mat-raised-button [disabled]="loading" color="warn" (click)="deleteAccount()">Delete account</button>
 					<img *ngIf="loading" src="assets/loading.png" />
 				</div>
 			</form>
 		</mat-tab>
 		<mat-tab label="Password">
-			<form name="password" (ngSubmit)="passwordForm.form.valid && changePassword()" #passwordForm="ngForm" novalidate class="large-form">
-				<div [ngClass]="{ 'has-error': passwordForm.submitted && !currentPassword.valid }">
-					<mat-form-field>
-						<input matInput type="password" name="current-password" [(ngModel)]="passwordUpdate.currentPassword" #currentPassword="ngModel" required placeholder="Current password">
-						<mat-error *ngIf="passwordForm.submitted && !currentPassword.valid">Password is not valid</mat-error>
-					</mat-form-field>
-				</div>
-				<div [ngClass]="{ 'has-error': passwordForm.submitted && !newPassword.valid }">
-					<mat-form-field>
-						<input matInput type="password" name="new-password" [(ngModel)]="passwordUpdate.newPassword" #newPassword="ngModel" required placeholder="New password">
-						<mat-error *ngIf="passwordForm.submitted && !newPassword.valid">New password is required</mat-error>
-					</mat-form-field>
-				</div>
-				<div [ngClass]="{ 'has-error': passwordForm.submitted && !repeatPassword.valid }">
-					<mat-form-field>
-						<input matInput type="password" name="repeat-password" [(ngModel)]="passwordUpdate.repeatPassword" #repeatPassword="ngModel" required placeholder="Repeat new password">
-						<mat-error *ngIf="passwordForm.submitted && !repeatPassword.valid">Repeat new password is required</mat-error>
-						<mat-error *ngIf="passwordForm.submitted && passwordUpdate.newPassword !== passwordUpdate.repeatPassword">Passwords are not identical</mat-error>
-					</mat-form-field>
-				</div>
+			<form [formGroup]="passwordForm" (ngSubmit)="changePassword()" class="large-form">
+				<mat-form-field>
+					<input matInput type="password" formControlName="currentPassword" required placeholder="Current password">
+					<mat-error *ngIf="passwordForm.controls['currentPassword'].errors?.required">Password is required</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput type="password" formControlName="newPassword"  required placeholder="New password">
+					<mat-error *ngIf="passwordForm.controls['newPassword'].errors?.required">New password is required</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput type="password" formControlName="confirmPassword" required placeholder="Repeat new password">
+					<mat-error *ngIf="passwordForm.controls['confirmPassword'].errors?.required">Repeat new password is required</mat-error>
+				</mat-form-field>
+				<mat-error *ngIf="passwordForm.controls['newPassword'].touched && passwordForm.controls['confirmPassword'].touched && passwordForm.errors?.notIdentical">Passwords must be identical</mat-error>
+
 				<div>
 					<a mat-raised-button [routerLink]="['/']">Cancel</a>
-					<button mat-raised-button [disabled]="loading">Save</button>
+					<button mat-raised-button [disabled]="loading  || passwordForm.invalid">Save</button>
 					<img *ngIf="loading" src="assets/loading.png" />
 				</div>
 			</form>

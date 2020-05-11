@@ -1,20 +1,18 @@
 <div class="nice-box">
 	<h2>Login</h2>
-	<form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-		<div [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-			<mat-form-field class="mat-block">
-				<input matInput type="text" name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="E-mail">
-				<mat-error *ngIf="f.submitted && !email.valid">E-mail is required</mat-error>
-			</mat-form-field>
-		</div>
-		<div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-			<mat-form-field class="mat-block">
-				<input matInput type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password">
-				<mat-error *ngIf="f.submitted && !password.valid">Password is required</mat-error>
-			</mat-form-field>
-		</div>
+	<form [formGroup]="loginForm" (ngSubmit)="login()">
+		<mat-form-field class="mat-block">
+			<input matInput name="email" type="text" formControlName="email" required placeholder="Email">
+			<mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required</mat-error>
+			<mat-error *ngIf="loginForm.controls['email'].errors?.email">Email is not valid</mat-error>
+		</mat-form-field>
+		<mat-form-field class="mat-block">
+			<input matInput name="password" type="password" formControlName="password" required placeholder="Password">
+			<mat-error *ngIf="loginForm.controls['password'].errors?.required">Password is required</mat-error>
+		</mat-form-field>
+
 		<div>
-			<button mat-raised-button [disabled]="loading">Login</button>
+			<button mat-raised-button [disabled]="loading || loginForm.invalid">Login</button>
 			<img *ngIf="loading" src="assets/loading.png" />
 			<p>
 				<a [routerLink]="['/register']">Don't have an account? Register!</a>

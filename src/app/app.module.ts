@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,7 +57,7 @@ import { MapService } from './services/map.service';
 		BrowserModule,
 		HttpClientModule,
 		RoutingModule,
-		FormsModule,
+		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		MatChipsModule,
 		MatDialogModule,

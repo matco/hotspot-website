@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Stash } from '../../models/stash';
 import { Spot } from '../../models/spot';
@@ -13,11 +14,20 @@ import { AlertService } from '../../services/alert.service';
 	templateUrl: './spot.component.html'
 })
 export class SpotComponent implements OnInit, OnDestroy {
-	stash: Stash;
-	spot: Spot = new Spot();
 	subscription;
 	loading = false;
 	positionWatcher;
+
+	stash: Stash;
+	spot: Spot;
+	spotForm = new FormGroup(
+		{
+			name: new FormControl('', [Validators.required]),
+			latitude: new FormControl('', [Validators.required]),
+			longitude: new FormControl('', [Validators.required]),
+			description: new FormControl(),
+		}
+	);
 
 	constructor(
 		private router: Router,
@@ -32,7 +42,10 @@ export class SpotComponent implements OnInit, OnDestroy {
 				this.stashService.get(parameters['stash']).subscribe(stash => this.stash = stash);
 			}
 			if(parameters['uuid']) {
-				this.spotService.get(parameters['uuid']).subscribe(spot => this.spot = spot);
+				this.spotService.get(parameters['uuid']).subscribe(spot => {
+					this.spot = spot;
+					this.spotForm.patchValue(spot);
+				});
 			}
 		});
 	}
@@ -60,12 +73,12 @@ export class SpotComponent implements OnInit, OnDestroy {
 			this.loading = false;
 			this.alertService.error(error);
 		};
-		if(this.spot.uuid) {
-			this.spotService.save(this.spot).subscribe(okCallback, errorCallback);
+		if(this.spot) {
+			this.spotService.save(this.spot.uuid, this.spotForm.value).subscribe(okCallback, errorCallback);
 		}
 		else {
 			//TODO find a way to chain observable
-			this.spotService.create(this.spot).subscribe(spot => {
+			this.spotService.create(this.spotForm.value).subscribe(spot => {
 				this.stashService
 					.addToStash(this.stash.uuid, spot.uuid)
 					.subscribe(okCallback, errorCallback);
