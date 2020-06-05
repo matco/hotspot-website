@@ -88,8 +88,9 @@ export class SpotComponent implements OnInit, OnDestroy {
 	}
 
 	updateLocation(position) {
-		this.spot.latitude = position.coords.latitude;
-		this.spot.longitude = position.coords.longitude;
+		if(position) {
+			this.spotForm.patchValue({latitude: position.coords.latitude, longitude: position.coords.longitude});
+		}
 	}
 
 	retrieveLocation() {

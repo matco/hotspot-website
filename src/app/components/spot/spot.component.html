@@ -16,7 +16,7 @@
 			<input matInput type="text" class="form-control" formControlName="longitude" placeholder="Longitude">
 			<mat-error *ngIf="spotForm.controls['longitude'].errors?.required">Longitude is required</mat-error>
 		</mat-form-field>
-		<button mat-raised-button (click)="retrieveLocation()" type="button">Use current location</button>
+		<button mat-raised-button type="button" (click)="retrieveLocation()" type="button">Use current location</button>
 		<!--<div style="padding: 2rem 0;">
 			<input type="file" accept="image/*;capture=camera" class="form-control" name="picture" [(ngModel)]="spot.picture" #description="ngModel" placeholder="Picture">
 		</div>-->
