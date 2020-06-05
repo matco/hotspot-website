@@ -46,9 +46,9 @@ export class HomeComponent implements OnInit {
 					const $spots = stashUuid ? this.stashService.getSpots(stashUuid) : of([]);
 					return $spots.pipe(
 						map(spots => {
-							return {stashUuid, spots}
+							return {stashUuid, spots};
 						})
-					)
+					);
 				})
 			),
 			this.activatedRoute.params.pipe(
@@ -57,9 +57,9 @@ export class HomeComponent implements OnInit {
 			)
 		).subscribe(([stashs, {stashUuid, spots}, spotUuid]) => {
 			this.stashs = stashs;
-			this.selectedStash = this.stashs.find(s => s.uuid == stashUuid);
+			this.selectedStash = this.stashs.find(s => s.uuid === stashUuid);
 			this.spots = spots;
-			this.selectedSpot = this.spots.find(s => s.uuid == spotUuid);
+			this.selectedSpot = this.spots.find(s => s.uuid === spotUuid);
 		});
 	}
 }

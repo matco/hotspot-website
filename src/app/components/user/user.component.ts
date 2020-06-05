@@ -56,7 +56,7 @@ export class UserComponent implements OnInit, OnDestroy {
 			if(parameters['handle']) {
 				this.userService.get(parameters['handle']).subscribe(user => {
 					this.user = user;
-					this.userForm.patchValue(user)
+					this.userForm.patchValue(user);
 				});
 			}
 			else {
@@ -91,7 +91,7 @@ export class UserComponent implements OnInit, OnDestroy {
 		const passwordUpdate = {
 			currentPassword: this.passwordForm.controls['currentPassword'].value,
 			newPassword: this.passwordForm.controls['newPassword'].value,
-		}
+		};
 		this.meService
 			.changePassword(passwordUpdate)
 			.subscribe(
