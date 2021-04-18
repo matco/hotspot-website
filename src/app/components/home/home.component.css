@@ -4,15 +4,13 @@
 	height: 100%;
 }
 app-stashs {
-	flex-basis: 20%;
-	max-width: 50rem;
+	width: 30rem;
 	order: 0;
 	background-color: white;
 	border-right: 2px solid #eee;
 }
 app-spots {
-	flex-basis: 20%;
-	max-width: 50rem;
+	width: 30rem;
 	order: 1;
 	background-color: white;
 	border-right: 2px solid #eee;
