@@ -12,12 +12,12 @@ import { StashDeletionDialog } from '../../dialogs/stash_deletion.dialog';
 
 @Component({
 	moduleId: module.id,
-	selector: 'app-stashs',
-	templateUrl: './stashs.component.html',
-	styleUrls: ['./stashs.component.css']
+	selector: 'app-stashes',
+	templateUrl: './stashes.component.html',
+	styleUrls: ['./stashes.component.css']
 })
-export class StashsComponent {
-	@Input() stashs: Stash[];
+export class StashesComponent {
+	@Input() stashes: Stash[];
 	@Input() selectedStash: Stash;
 
 	constructor(
@@ -35,7 +35,7 @@ export class StashsComponent {
 						if(this.selectedStash && this.selectedStash.uuid === stash.uuid) {
 							this.router.navigate(['/home']);
 						}
-						this.stashs.splice(this.stashs.indexOf(stash), 1);
+						this.stashes.splice(this.stashes.indexOf(stash), 1);
 					},
 					error => {
 						this.alertService.error('Unable to delete stash.');

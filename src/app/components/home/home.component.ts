@@ -20,8 +20,8 @@ import { SpotService } from '../../services/spot.service';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-	stashs: Stash[];
-		selectedStash: Stash;
+	stashes: Stash[];
+	selectedStash: Stash;
 	spots: Spot[];
 	selectedSpot: Spot;
 	center = {lat: 24, lng: 12};
@@ -55,9 +55,9 @@ export class HomeComponent implements OnInit {
 				map(parameters => parameters['spot'] as string),
 				distinctUntilChanged()
 			)
-		).subscribe(([stashs, {stashUuid, spots}, spotUuid]) => {
-			this.stashs = stashs;
-			this.selectedStash = this.stashs.find(s => s.uuid === stashUuid);
+		).subscribe(([stashes, {stashUuid, spots}, spotUuid]) => {
+			this.stashes = stashes;
+			this.selectedStash = this.stashes.find(s => s.uuid === stashUuid);
 			this.spots = spots;
 			this.selectedSpot = this.spots.find(s => s.uuid === spotUuid);
 		});

@@ -18,12 +18,12 @@ const routes: Routes = [
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'users/:handle', component: UserComponent, canActivate: [AuthGuard] },
-	{ path: 'stashs/:uuid', component: StashComponent, canActivate: [AuthGuard] },
+	{ path: 'stashes/:uuid', component: StashComponent, canActivate: [AuthGuard] },
 	{ path: 'stash', component: StashComponent, canActivate: [AuthGuard] },
 	{ path: 'spots/:uuid', component: SpotComponent, canActivate: [AuthGuard] },
 	{ path: 'spot', component: SpotComponent, canActivate: [AuthGuard] },
 	{ path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-	//no url redirect to stashs
+	//no url redirect to stashes
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 	//otherwise redirect to not found error page
 	{ path: '**', component: NotFoundComponent }

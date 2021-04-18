@@ -46,7 +46,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { StashsComponent } from './components/stashs/stashs.component';
+import { StashesComponent } from './components/stashes/stashes.component';
 import { StashComponent } from './components/stash/stash.component';
 import { SpotsComponent } from './components/spots/spots.component';
 import { SpotComponent } from './components/spot/spot.component';
@@ -82,7 +82,7 @@ import { MapService } from './services/map.service';
 		UserComponent,
 		HeaderComponent,
 		HomeComponent,
-		StashsComponent,
+		StashesComponent,
 		StashComponent,
 		SpotsComponent,
 		SpotComponent,

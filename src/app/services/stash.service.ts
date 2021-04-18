@@ -11,34 +11,34 @@ export class StashService {
 	constructor(private http: HttpClient) { }
 
 	all(): Observable<Stash[]> {
-		return this.http.get<Stash[]>(AppService.API_URL + '/stashs');
+		return this.http.get<Stash[]>(AppService.API_URL + '/stashes');
 	}
 
 	create(stash: Stash): Observable<Stash> {
-		return this.http.post<Stash>(AppService.API_URL + '/stashs', stash);
+		return this.http.post<Stash>(AppService.API_URL + '/stashes', stash);
 	}
 
 	get(uuid: string): Observable<Stash> {
-		return this.http.get<Stash>(AppService.API_URL + '/stashs/' + uuid);
+		return this.http.get<Stash>(AppService.API_URL + '/stashes/' + uuid);
 	}
 
 	save(uuid: string, stash: Stash) {
-		return this.http.put(AppService.API_URL + '/stashs/' + uuid, stash);
+		return this.http.put(AppService.API_URL + '/stashes/' + uuid, stash);
 	}
 
 	delete(uuid: string) {
-		return this.http.delete(AppService.API_URL + '/stashs/' + uuid);
+		return this.http.delete(AppService.API_URL + '/stashes/' + uuid);
 	}
 
 	getSpots(uuid: string): Observable<Spot[]> {
-		return this.http.get<Spot[]>(AppService.API_URL + '/stashs/' + uuid + '/spots');
+		return this.http.get<Spot[]>(AppService.API_URL + '/stashes/' + uuid + '/spots');
 	}
 
 	addToStash(stashUuid: string, spotUuid: string) {
-		return this.http.post(AppService.API_URL + '/stashs/' + stashUuid + '/spots/' + spotUuid, undefined);
+		return this.http.post(AppService.API_URL + '/stashes/' + stashUuid + '/spots/' + spotUuid, undefined);
 	}
 
 	removeFromStash(stashUuid: string, spotUuid: string) {
-		return this.http.delete(AppService.API_URL + '/stashs/' + stashUuid + '/spots/' + spotUuid);
+		return this.http.delete(AppService.API_URL + '/stashes/' + stashUuid + '/spots/' + spotUuid);
 	}
 }
