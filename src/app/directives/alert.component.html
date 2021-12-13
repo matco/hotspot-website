@@ -1,1 +1,1 @@
-<div *ngIf="message" (click)="close()" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
+<div *ngIf="alert" (click)="close()" [ngClass]="{ 'alert': alert, 'alert-success': alert.type === 'success', 'alert-danger': alert.type === 'error' }">{{alert.message}}</div>

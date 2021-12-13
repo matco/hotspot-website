@@ -77,7 +77,7 @@ export class UserComponent implements OnInit, OnDestroy {
 			.update(this.user.handle, user)
 			.subscribe(
 				data => {
-					this.alertService.success('Your profile has been updated successfully', true);
+					this.alertService.success('Your profile has been updated successfully');
 					this.router.navigate(['/']);
 				},
 				error => {
@@ -96,7 +96,7 @@ export class UserComponent implements OnInit, OnDestroy {
 			.changePassword(passwordUpdate)
 			.subscribe(
 				data => {
-					this.alertService.success('Your password has been updated successfully', true);
+					this.alertService.success('Your password has been updated successfully');
 					this.router.navigate(['/']);
 				},
 				error => {
@@ -117,7 +117,7 @@ export class UserComponent implements OnInit, OnDestroy {
 					.delete(this.user.handle)
 					.subscribe(
 						data => {
-							this.alertService.success('Your account has been deleted successfully', true);
+							this.alertService.success('Your account has been deleted successfully');
 							this.router.navigate(['/login']);
 						},
 						error => {

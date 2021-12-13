@@ -61,7 +61,7 @@ export class SpotComponent implements OnInit, OnDestroy {
 		this.loading = true;
 		const okCallback = data => {
 			this.loading = false;
-			this.alertService.success('Spot saved successfully', true);
+			this.alertService.success('Spot saved successfully');
 			const route = [];
 			route.push('/home');
 			if(this.stash) {

@@ -33,7 +33,7 @@ export class RegisterComponent {
 			.create(this.registerForm.value)
 			.subscribe(
 				data => {
-					this.alertService.success('Registration successful', true);
+					this.alertService.success('Registration successful');
 					this.router.navigate(['/login']);
 				},
 				error => {

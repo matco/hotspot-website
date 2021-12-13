@@ -49,7 +49,7 @@ export class StashComponent implements OnInit, OnDestroy {
 		this.loading = true;
 		const okCallback = data => {
 			this.loading = false;
-			this.alertService.success('Stash saved successfully', true);
+			this.alertService.success('Stash saved successfully');
 			this.router.navigate(['/home']);
 		};
 		const errorCallback = error => {
