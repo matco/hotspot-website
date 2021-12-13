@@ -1,7 +1,8 @@
-// Place your settings in this file to overwrite default and user settings.
 {
 	"files.exclude": {
 		"node_modules": true,
-		"test-output": true
+		"test-output": true,
+		".angular/cache": true,
+		"dist": true
 	}
 }
