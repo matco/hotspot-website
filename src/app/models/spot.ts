@@ -1,11 +1,7 @@
-export class Spot {
+export interface Spot {
 	uuid: string;
-	name = '';
+	name: string;
 	latitude: number;
 	longitude: number;
-	description = '';
-
-	constructor(values: Object = {}) {
-		Object.assign(this, values);
-	}
+	description: string;
 }

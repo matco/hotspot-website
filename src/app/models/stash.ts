@@ -1,12 +1,8 @@
 import { Spot } from './spot';
 
-export class Stash {
+export interface Stash {
 	uuid: string;
-	name = '';
-	description = '';
-	spots: Spot[] = [];
-
-	constructor(values: Object = {}) {
-		Object.assign(this, values);
-	}
+	name: string;
+	description: string;
+	spots: Spot[];
 }
