@@ -10,7 +10,6 @@ import { StashService } from '../../services/stash.service';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
-	moduleId: module.id,
 	templateUrl: './spot.component.html'
 })
 export class SpotComponent implements OnInit, OnDestroy {

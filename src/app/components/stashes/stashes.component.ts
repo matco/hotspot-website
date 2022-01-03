@@ -11,7 +11,6 @@ import { AlertService } from '../../services/alert.service';
 import { StashDeletionDialog } from '../../dialogs/stash_deletion.dialog';
 
 @Component({
-	moduleId: module.id,
 	selector: 'app-stashes',
 	templateUrl: './stashes.component.html',
 	styleUrls: ['./stashes.component.css']

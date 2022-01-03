@@ -13,7 +13,6 @@ import { SpotDeletionDialog } from '../../dialogs/spot_deletion.dialog';
 import { MapService } from 'app/services/map.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'app-spots',
 	templateUrl: './spots.component.html',
 	styleUrls: ['./spots.component.css']

@@ -14,7 +14,6 @@ import { UserDeletionDialog } from '../../dialogs/user_deletion.dialog';
 import { matchingPasswords } from '../../directives/matching-passwords';
 
 @Component({
-	moduleId: module.id,
 	templateUrl: './user.component.html',
 	styleUrls: ['./user.component.css']
 })

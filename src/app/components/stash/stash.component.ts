@@ -8,7 +8,6 @@ import { StashService } from '../../services/stash.service';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
-	moduleId: module.id,
 	templateUrl: './stash.component.html'
 })
 

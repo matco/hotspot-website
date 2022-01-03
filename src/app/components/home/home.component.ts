@@ -15,7 +15,6 @@ import { StashService } from '../../services/stash.service';
 import { SpotService } from '../../services/spot.service';
 
 @Component({
-	moduleId: module.id,
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.css']
 })
