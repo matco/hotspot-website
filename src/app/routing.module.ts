@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-
 import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
 
 import { NetworkErrorComponent } from './components/network-error/network-error.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';

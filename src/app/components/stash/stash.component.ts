@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,10 +14,10 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class StashComponent implements OnInit, OnDestroy {
-	subscription;
+	subscription?: Subscription;
 	loading = false;
 
-	stash: Stash;
+	stash?: Stash;
 	stashForm = new FormGroup(
 		{
 			name: new FormControl('', [Validators.required]),
@@ -41,25 +43,25 @@ export class StashComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.subscription.unsubscribe();
+		this.subscription?.unsubscribe();
 	}
 
 	save() {
 		this.loading = true;
-		const okCallback = data => {
+		const okCallback = () => {
 			this.loading = false;
 			this.alertService.success('Stash saved successfully');
 			this.router.navigate(['/home']);
 		};
-		const errorCallback = error => {
+		const errorCallback = (error: string) => {
 			this.loading = false;
 			this.alertService.error(error);
 		};
 		if(this.stash) {
-			this.stashService.save(this.stash.uuid, this.stashForm.value).subscribe(okCallback, errorCallback);
+			this.stashService.save(this.stash.uuid, this.stashForm.value).subscribe({next: okCallback, error: errorCallback});
 		}
 		else {
-			this.stashService.create(this.stashForm.value).subscribe(okCallback, errorCallback);
+			this.stashService.create(this.stashForm.value).subscribe({next: okCallback, error: errorCallback});
 		}
 	}
 }

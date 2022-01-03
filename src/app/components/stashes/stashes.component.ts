@@ -16,8 +16,8 @@ import { StashDeletionDialog } from '../../dialogs/stash_deletion.dialog';
 	styleUrls: ['./stashes.component.css']
 })
 export class StashesComponent {
-	@Input() stashes: Stash[];
-	@Input() selectedStash: Stash;
+	@Input() stashes: Stash[] = [];
+	@Input() selectedStash?: Stash;
 
 	constructor(
 		private router: Router,
@@ -28,18 +28,18 @@ export class StashesComponent {
 	deleteStash(stash: Stash): void {
 		this.dialog.open(StashDeletionDialog).afterClosed().subscribe(result => {
 			if(result) {
-				this.stashService.delete(stash.uuid).subscribe(
-					data => {
+				this.stashService.delete(stash.uuid).subscribe({
+					next: () => {
 						//reset selection if deleted stash was selected stash
 						if(this.selectedStash && this.selectedStash.uuid === stash.uuid) {
 							this.router.navigate(['/home']);
 						}
 						this.stashes.splice(this.stashes.indexOf(stash), 1);
 					},
-					error => {
-						this.alertService.error('Unable to delete stash.');
+					error: () => {
+						this.alertService.error('Unable to delete stash');
 					}
-				);
+				});
 			}
 		});
 	}

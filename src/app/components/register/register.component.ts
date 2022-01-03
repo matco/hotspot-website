@@ -31,14 +31,15 @@ export class RegisterComponent {
 		this.loading = true;
 		this.userService
 			.create(this.registerForm.value)
-			.subscribe(
-				data => {
+			.subscribe({
+				next: () => {
 					this.alertService.success('Registration successful');
 					this.router.navigate(['/login']);
 				},
-				error => {
+				error: error => {
 					this.alertService.error(error);
 					this.loading = false;
-				});
+				}
+			});
 	}
 }

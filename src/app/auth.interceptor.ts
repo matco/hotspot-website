@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 	constructor(private router: Router) {
 	}
 
-	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		const flags = new Map<string, boolean>([
 			[AuthInterceptor.HEADER_SKIP_ERROR_HANDLING, false]
 		]);

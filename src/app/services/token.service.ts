@@ -11,11 +11,11 @@ export class TokenService {
 
 	get(email: string, password: string) {
 		return this.http
-			.post(`${AppService.API_URL}/tokens`, {email : email, password : password})
+			.post<{[token: string]: string}>(`${AppService.API_URL}/tokens`, {email: email, password: password})
 			.pipe(map((response: {[token: string]: string}) => {
 				//login successful if there's a jwt token in the response
 				//store user details and jwt token in local storage to keep user logged in between page refreshes
-				localStorage.setItem(TokenService.tokenStorageKey, response.token);
+				localStorage.setItem(TokenService.tokenStorageKey, response['token']);
 			}));
 	}
 

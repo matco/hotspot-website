@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Alert } from 'app/models/alert';
 import { AlertService } from '../services/alert.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AlertService } from '../services/alert.service';
 })
 
 export class AlertComponent implements OnInit {
-	alert: any;
+	alert?: Alert;
 
 	constructor(private alertService: AlertService) {}
 

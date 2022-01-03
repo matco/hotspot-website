@@ -6,8 +6,7 @@ import { Spot } from '../models/spot';
 })
 export class SpotPipe implements PipeTransform {
 
-	transform(spot: Spot, args?: any): any {
+	transform(spot: Spot): string {
 		return spot.name;
 	}
-
 }

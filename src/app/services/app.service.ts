@@ -7,7 +7,6 @@ export enum AppMode {
 
 @Injectable()
 export class AppService {
-	constructor() {}
 	public static APP_MODE: AppMode = AppMode.DEV;
 	public static API_URL = '/api';
 }

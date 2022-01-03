@@ -1,9 +1,9 @@
+import { Subscription } from 'rxjs';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
 
 import { User } from '../../models/user';
-import { AlertService } from '../../services/alert.service';
-import { AppService } from '../../services/app.service';
 import { TokenService } from '../../services/token.service';
 import { MeService } from '../../services/me.service';
 
@@ -13,20 +13,18 @@ import { MeService } from '../../services/me.service';
 	styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-	subscription;
-	user: User;
+	subscription?: Subscription;
+	user?: User;
 
 	constructor(
 		private router: Router,
-		private alertService: AlertService,
-		private appService: AppService,
 		private tokenService: TokenService,
 		private meService: MeService) {}
 
 	ngOnInit() {
 		this.subscription = this.router.events.subscribe(event => {
 			if(event instanceof RoutesRecognized) {
-				if(event.state.root.firstChild.params['reload']) {
+				if(event?.state?.root?.firstChild?.params['reload']) {
 					this.getUser();
 				}
 			}
@@ -35,7 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		this.subscription.unsubscribe();
+		this.subscription?.unsubscribe();
 	}
 
 	getUser() {

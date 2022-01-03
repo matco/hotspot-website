@@ -1,7 +1,8 @@
+import { Subscription } from 'rxjs';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
 import { MatDialog } from '@angular/material/dialog';
 
 import { User } from '../../models/user';
@@ -19,8 +20,8 @@ import { matchingPasswords } from '../../directives/matching-passwords';
 })
 export class UserComponent implements OnInit, OnDestroy {
 
-	user: User;
-	subscription;
+	user?: User;
+	subscription? : Subscription;
 	loading = false;
 
 	userForm = new FormGroup(
@@ -66,23 +67,26 @@ export class UserComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.subscription.unsubscribe();
+		this.subscription?.unsubscribe();
 	}
 
 	saveDetails() {
-		this.loading = true;
-		const user = this.userForm.value;
-		this.userService
-			.update(this.user.handle, user)
-			.subscribe(
-				data => {
-					this.alertService.success('Your profile has been updated successfully');
-					this.router.navigate(['/']);
-				},
-				error => {
-					this.alertService.error(error);
-					this.loading = false;
+		if(this.user) {
+			this.loading = true;
+			const user = this.userForm.value;
+			this.userService
+				.update(this.user.handle, user)
+				.subscribe({
+					next: () => {
+						this.alertService.success('Your profile has been updated successfully');
+						this.router.navigate(['/']);
+					},
+					error: error => {
+						this.alertService.error(error);
+						this.loading = false;
+					}
 				});
+		}
 	}
 
 	changePassword() {
@@ -93,12 +97,12 @@ export class UserComponent implements OnInit, OnDestroy {
 		};
 		this.meService
 			.changePassword(passwordUpdate)
-			.subscribe(
-				data => {
+			.subscribe({
+				next: () => {
 					this.alertService.success('Your password has been updated successfully');
 					this.router.navigate(['/']);
 				},
-				error => {
+				error: error => {
 					if(error.status === 401) {
 						this.alertService.error('Current password is invalid');
 					}
@@ -106,22 +110,24 @@ export class UserComponent implements OnInit, OnDestroy {
 						this.alertService.error('Unknown error');
 					}
 					this.loading = false;
-				});
+				}
+			});
 	}
 
 	deleteAccount() {
 		this.dialog.open(UserDeletionDialog).afterClosed().subscribe(result => {
-			if(result) {
+			if(result && this.user) {
 				this.userService
 					.delete(this.user.handle)
-					.subscribe(
-						data => {
+					.subscribe({
+						next: () => {
 							this.alertService.success('Your account has been deleted successfully');
 							this.router.navigate(['/login']);
 						},
-						error => {
+						error: error => {
 							this.alertService.error(error);
-						});
+						}
+					});
 			}
 		});
 	}

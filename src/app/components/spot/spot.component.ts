@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -13,12 +15,12 @@ import { AlertService } from '../../services/alert.service';
 	templateUrl: './spot.component.html'
 })
 export class SpotComponent implements OnInit, OnDestroy {
-	subscription;
+	subscription?: Subscription;
 	loading = false;
-	positionWatcher;
+	positionWatcher?: number;
 
-	stash: Stash;
-	spot: Spot;
+	stash?: Stash;
+	spot?: Spot;
 	spotForm = new FormGroup(
 		{
 			name: new FormControl('', [Validators.required]),
@@ -50,7 +52,7 @@ export class SpotComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.subscription.unsubscribe();
+		this.subscription?.unsubscribe();
 		if(this.positionWatcher) {
 			navigator.geolocation.clearWatch(this.positionWatcher);
 		}
@@ -58,35 +60,42 @@ export class SpotComponent implements OnInit, OnDestroy {
 
 	save() {
 		this.loading = true;
-		const okCallback = data => {
+		const okCallback = () => {
 			this.loading = false;
 			this.alertService.success('Spot saved successfully');
 			const route = [];
 			route.push('/home');
 			if(this.stash) {
-				route.push({stash : this.stash.uuid});
+				route.push({stash: this.stash.uuid});
 			}
 			this.router.navigate(route);
 		};
-		const errorCallback = error => {
+		const errorCallback = (error: string) => {
 			this.loading = false;
 			this.alertService.error(error);
 		};
 		if(this.spot) {
-			this.spotService.save(this.spot.uuid, this.spotForm.value).subscribe(okCallback, errorCallback);
+			this.spotService.save(this.spot.uuid, this.spotForm.value).subscribe({next: okCallback, error: errorCallback});
 		}
 		else {
 			//TODO find a way to chain observable
-			this.spotService.create(this.spotForm.value).subscribe(spot => {
-				this.stashService
-					.addToStash(this.stash.uuid, spot.uuid)
-					.subscribe(okCallback, errorCallback);
-			},
-			errorCallback);
+			this.spotService.create(this.spotForm.value).subscribe({
+				next: spot => {
+					if(this.stash) {
+						this.stashService
+							.addToStash(this.stash.uuid, spot.uuid)
+							.subscribe({next: okCallback, error: errorCallback});
+					}
+					else {
+						okCallback();
+					}
+				},
+				error: errorCallback
+			});
 		}
 	}
 
-	updateLocation(position) {
+	updateLocation(position: GeolocationPosition) {
 		if(position) {
 			this.spotForm.patchValue({latitude: position.coords.latitude, longitude: position.coords.longitude});
 		}

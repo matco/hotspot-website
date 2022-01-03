@@ -18,9 +18,9 @@ import { MapService } from 'app/services/map.service';
 	styleUrls: ['./spots.component.css']
 })
 export class SpotsComponent {
-	@Input() spots: Spot[];
-	@Input() selectedSpot: Spot;
-	@Input() selectedStash: Stash;
+	@Input() spots: Spot[] = [];
+	@Input() selectedSpot?: Spot;
+	@Input() selectedStash!: Stash;
 
 	constructor(
 		private router: Router,
@@ -32,18 +32,18 @@ export class SpotsComponent {
 	deleteSpot(spot: Spot): void {
 		this.dialog.open(SpotDeletionDialog).afterClosed().subscribe(result => {
 			if(result) {
-				this.spotService.delete(spot.uuid).subscribe(
-					data => {
+				this.spotService.delete(spot.uuid).subscribe({
+					next: () => {
 						//reset selection if deleted spot was selected spot
 						if(this.selectedSpot && this.selectedSpot.uuid === spot.uuid) {
 							this.router.navigate(['/home', { stash: this.selectedStash.uuid }]);
 						}
 						this.spots.splice(this.spots.indexOf(spot), 1);
 					},
-					error => {
-						this.alertService.error('Unable to delete spot.');
+					error: () => {
+						this.alertService.error('Unable to delete spot');
 					}
-				);
+				});
 			}
 		});
 	}

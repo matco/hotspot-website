@@ -13,7 +13,6 @@ import { TokenService } from '../../services/token.service';
 export class LoginComponent {
 
 	loading = false;
-	returnUrl: string;
 
 	loginForm = new FormGroup(
 		{
@@ -31,15 +30,13 @@ export class LoginComponent {
 		this.loading = true;
 		this.tokenService
 			.get(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
-			.subscribe(
-				token => {
-					this.router.navigate(['/home', {reload : true}]);
-				},
-				error => {
+			.subscribe({
+				next: () => this.router.navigate(['/home', {reload: true}]),
+				error: () => {
 					this.alertService.error('Wrong login or password');
 					this.loading = false;
 				}
-			);
+			});
 	}
 
 }
