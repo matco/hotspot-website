@@ -14,13 +14,13 @@ export class AuthInterceptor implements HttpInterceptor {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		const flags = {
-			HEADER_SKIP_ERROR_HANDLING: false
-		};
+		const flags = new Map<string, boolean>([
+			[AuthInterceptor.HEADER_SKIP_ERROR_HANDLING, false]
+		]);
 		let enhanced_request;
 		//retrieve flags if any
 		if(request.headers.has(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING)) {
-			flags[AuthInterceptor.HEADER_SKIP_ERROR_HANDLING] = true;
+			flags.set(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING, true);
 			const headers = request.headers.delete(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING);
 			enhanced_request = request.clone({headers});
 		}
@@ -34,7 +34,7 @@ export class AuthInterceptor implements HttpInterceptor {
 		}
 		const response_stream = next.handle(enhanced_request);
 		//do not handle error if the the skip error flag has been set
-		if(flags[AuthInterceptor.HEADER_SKIP_ERROR_HANDLING]) {
+		if(flags.get(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING)) {
 			return response_stream;
 		}
 		else {
