@@ -11,11 +11,11 @@ export class MeService {
 	constructor(private http: HttpClient) {}
 
 	get(): Observable<User> {
-		return this.http.get<User>(AppService.API_URL + '/me');
+		return this.http.get<User>(`${AppService.API_URL}/me`);
 	}
 
 	changePassword(passwordUpdate: PasswordUpdate): Observable<HttpResponse<string>> {
 		const headers = new HttpHeaders().set(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING, '');
-		return this.http.post<HttpResponse<string>>(AppService.API_URL + '/me/password', passwordUpdate, {headers});
+		return this.http.post<HttpResponse<string>>(`${AppService.API_URL}/me/password`, passwordUpdate, {headers});
 	}
 }

@@ -10,22 +10,22 @@ export class SpotService {
 	constructor(private http: HttpClient) {}
 
 	all(): Observable<Spot[]> {
-		return this.http.get<Spot[]>(AppService.API_URL + '/spots');
+		return this.http.get<Spot[]>(`${AppService.API_URL}/spots`);
 	}
 
 	create(spot: Spot): Observable<Spot> {
-		return this.http.post<Spot>(AppService.API_URL + '/spots', spot);
+		return this.http.post<Spot>(`${AppService.API_URL}/spots`, spot);
 	}
 
 	get(uuid: string): Observable<Spot> {
-		return this.http.get<Spot>(AppService.API_URL + '/spots/' + uuid);
+		return this.http.get<Spot>(`${AppService.API_URL}/spots/${uuid}`);
 	}
 
 	save(uuid: string, spot: Spot) {
-		return this.http.put(AppService.API_URL + '/spots/' + uuid, spot);
+		return this.http.put(`${AppService.API_URL}/spots/${uuid}`, spot);
 	}
 
 	delete(uuid: string) {
-		return this.http.delete(AppService.API_URL + '/spots/' + uuid);
+		return this.http.delete(`${AppService.API_URL}/spots/${uuid}`);
 	}
 }
