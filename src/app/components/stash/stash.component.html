@@ -3,11 +3,11 @@
 	<form [formGroup]="stashForm" (ngSubmit)="save()" novalidate class="large-form">
 		<mat-form-field>
 			<input matInput type="text" formControlName="name" required placeholder="Name">
-			<mat-error *ngIf="stashForm.controls['name'].errors?.required">Name is required</mat-error>
+			<mat-error *ngIf="stashForm.controls['name'].errors?.['required']">Name is required</mat-error>
 		</mat-form-field>
 		<mat-form-field>
 			<input matInput type="text" formControlName="description" placeholder="Description">
-			<mat-error *ngIf="stashForm.controls['description'].errors?.required">Description is required</mat-error>
+			<mat-error *ngIf="stashForm.controls['description'].errors?.['required']">Description is required</mat-error>
 		</mat-form-field>
 
 		<div>

@@ -5,16 +5,16 @@
 			<form [formGroup]="userForm" (ngSubmit)="saveDetails()" class="large-form">
 				<mat-form-field>
 					<input matInput type="text" formControlName="firstname" required placeholder="Firstname">
-					<mat-error *ngIf="userForm.controls['firstname'].errors?.required">First name is required</mat-error>
+					<mat-error *ngIf="userForm.controls['firstname'].errors?.['required']">First name is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput type="text" formControlName="lastname" required placeholder="Lastname">
-					<mat-error *ngIf="userForm.controls['lastname'].errors?.required">Last name is required</mat-error>
+					<mat-error *ngIf="userForm.controls['lastname'].errors?.['required']">Last name is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput type="email" formControlName="email" required placeholder="Email">
-					<mat-error *ngIf="userForm.controls['email'].errors?.required">Email is required</mat-error>
-					<mat-error *ngIf="userForm.controls['email'].errors?.email">Email is not valid</mat-error>
+					<mat-error *ngIf="userForm.controls['email'].errors?.['required']">Email is required</mat-error>
+					<mat-error *ngIf="userForm.controls['email'].errors?.['email']">Email is not valid</mat-error>
 				</mat-form-field>
 
 				<div class="button-row">
@@ -29,17 +29,17 @@
 			<form [formGroup]="passwordForm" (ngSubmit)="changePassword()" class="large-form">
 				<mat-form-field>
 					<input matInput type="password" formControlName="currentPassword" required placeholder="Current password">
-					<mat-error *ngIf="passwordForm.controls['currentPassword'].errors?.required">Password is required</mat-error>
+					<mat-error *ngIf="passwordForm.controls['currentPassword'].errors?.['required']">Password is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput type="password" formControlName="newPassword"  required placeholder="New password">
-					<mat-error *ngIf="passwordForm.controls['newPassword'].errors?.required">New password is required</mat-error>
+					<mat-error *ngIf="passwordForm.controls['newPassword'].errors?.['required']">New password is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput type="password" formControlName="confirmPassword" required placeholder="Repeat new password">
-					<mat-error *ngIf="passwordForm.controls['confirmPassword'].errors?.required">Repeat new password is required</mat-error>
+					<mat-error *ngIf="passwordForm.controls['confirmPassword'].errors?.['required']">Repeat new password is required</mat-error>
 				</mat-form-field>
-				<mat-error *ngIf="passwordForm.controls['newPassword'].touched && passwordForm.controls['confirmPassword'].touched && passwordForm.errors?.notIdentical">Passwords must be identical</mat-error>
+				<mat-error *ngIf="passwordForm.controls['newPassword'].touched && passwordForm.controls['confirmPassword'].touched && passwordForm.errors?.['notIdentical']">Passwords must be identical</mat-error>
 
 				<div>
 					<a mat-raised-button [routerLink]="['/']">Cancel</a>
