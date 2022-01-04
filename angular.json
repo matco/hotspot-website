@@ -7,6 +7,12 @@
 			"root": "",
 			"sourceRoot": "src",
 			"projectType": "application",
+			"prefix": "app",
+			"schematics": {
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
 			"architect": {
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
@@ -115,17 +121,5 @@
 			}
 		}
 	},
-	"defaultProject": "hotspot",
-	"schematics": {
-		"@schematics/angular:component": {
-			"prefix": "app",
-			"styleext": "css"
-		},
-		"@schematics/angular:directive": {
-			"prefix": "app"
-		}
-	},
-	"cli": {
-		"defaultCollection": "@angular-eslint/schematics"
-	}
+	"defaultProject": "hotspot"
 }
