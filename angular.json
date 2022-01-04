@@ -85,15 +85,6 @@
 							"src/favicon.ico"
 						]
 					}
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"src/**/*.ts",
-							"src/**/*.html"
-						]
-					}
 				}
 			}
 		},
@@ -107,15 +98,6 @@
 					"options": {
 						"protractorConfig": "./protractor.conf.js",
 						"devServerTarget": "hotspot:serve"
-					}
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"src/**/*.ts",
-							"src/**/*.html"
-						]
 					}
 				}
 			}
