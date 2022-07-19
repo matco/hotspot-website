@@ -2,12 +2,12 @@
 	<h2>Login</h2>
 	<form [formGroup]="loginForm" (ngSubmit)="login()">
 		<mat-form-field class="mat-block">
-			<input matInput name="email" type="text" formControlName="email" required placeholder="Email">
+			<input matInput name="email" type="text" formControlName="email" required placeholder="Email" autocomplete="email">
 			<mat-error *ngIf="loginForm.controls['email'].errors?.['required']">Email is required</mat-error>
 			<mat-error *ngIf="loginForm.controls['email'].errors?.['email']">Email is not valid</mat-error>
 		</mat-form-field>
 		<mat-form-field class="mat-block">
-			<input matInput name="password" type="password" formControlName="password" required placeholder="Password">
+			<input matInput name="password" type="password" formControlName="password" required placeholder="Password" autocomplete="current-password">
 			<mat-error *ngIf="loginForm.controls['password'].errors?.['required']">Password is required</mat-error>
 		</mat-form-field>
 

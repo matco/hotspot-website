@@ -2,20 +2,20 @@
 	<h2>Register</h2>
 	<form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
 		<mat-form-field>
-			<input matInput type="text" formControlName="firstname" required placeholder="First name">
+			<input matInput type="text" formControlName="firstname" required placeholder="First name" autocomplete="given-name">
 			<mat-error *ngIf="registerForm.controls['firstname'].errors?.['required']">First name is required</mat-error>
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput type="text" formControlName="lastname" required placeholder="Last name">
+			<input matInput type="text" formControlName="lastname" required placeholder="Last name" autocomplete="family-name">
 			<mat-error *ngIf="registerForm.controls['lastname'].errors?.['required']">Last name is required</mat-error>
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput type="email" formControlName="email" required placeholder="Email">
+			<input matInput type="email" formControlName="email" required placeholder="Email" autocomplete="email">
 			<mat-error *ngIf="registerForm.controls['email'].errors?.['required']">Email required</mat-error>
 			<mat-error *ngIf="registerForm.controls['email'].errors?.['email']">Email is not valid</mat-error>
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput type="password" formControlName="password" required placeholder="Password">
+			<input matInput type="password" formControlName="password" required placeholder="Password" autocomplete="new-password">
 			<mat-error *ngIf="registerForm.controls['password'].errors?.['required']">Password is required</mat-error>
 		</mat-form-field>
 

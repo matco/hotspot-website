@@ -4,15 +4,15 @@
 		<mat-tab label="Details">
 			<form [formGroup]="userForm" (ngSubmit)="saveDetails()" class="large-form">
 				<mat-form-field>
-					<input matInput type="text" formControlName="firstname" required placeholder="Firstname">
+					<input matInput type="text" formControlName="firstname" required placeholder="Firstname" autocomplete="given-name">
 					<mat-error *ngIf="userForm.controls['firstname'].errors?.['required']">First name is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
-					<input matInput type="text" formControlName="lastname" required placeholder="Lastname">
+					<input matInput type="text" formControlName="lastname" required placeholder="Lastname" autocomplete="family-name">
 					<mat-error *ngIf="userForm.controls['lastname'].errors?.['required']">Last name is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
-					<input matInput type="email" formControlName="email" required placeholder="Email">
+					<input matInput type="email" formControlName="email" required placeholder="Email" autocomplete="email">
 					<mat-error *ngIf="userForm.controls['email'].errors?.['required']">Email is required</mat-error>
 					<mat-error *ngIf="userForm.controls['email'].errors?.['email']">Email is not valid</mat-error>
 				</mat-form-field>
@@ -28,15 +28,15 @@
 		<mat-tab label="Password">
 			<form [formGroup]="passwordForm" (ngSubmit)="changePassword()" class="large-form">
 				<mat-form-field>
-					<input matInput type="password" formControlName="currentPassword" required placeholder="Current password">
+					<input matInput type="password" formControlName="currentPassword" required placeholder="Current password" autocomplete="current-password">
 					<mat-error *ngIf="passwordForm.controls['currentPassword'].errors?.['required']">Password is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
-					<input matInput type="password" formControlName="newPassword"  required placeholder="New password">
+					<input matInput type="password" formControlName="newPassword"  required placeholder="New password" autocomplete="new-password">
 					<mat-error *ngIf="passwordForm.controls['newPassword'].errors?.['required']">New password is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
-					<input matInput type="password" formControlName="confirmPassword" required placeholder="Repeat new password">
+					<input matInput type="password" formControlName="confirmPassword" required placeholder="Repeat new password" autocomplete="new-password">
 					<mat-error *ngIf="passwordForm.controls['confirmPassword'].errors?.['required']">Repeat new password is required</mat-error>
 				</mat-form-field>
 				<mat-error *ngIf="passwordForm.controls['newPassword'].touched && passwordForm.controls['confirmPassword'].touched && passwordForm.errors?.['notIdentical']">Passwords must be identical</mat-error>
