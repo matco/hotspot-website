@@ -103,5 +103,7 @@
 			}
 		}
 	},
-	"defaultProject": "hotspot"
+	"cli": {
+		"analytics": false
+	}
 }

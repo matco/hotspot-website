@@ -26,17 +26,17 @@ export class UserComponent implements OnInit, OnDestroy {
 
 	userForm = new FormGroup(
 		{
-			firstname: new FormControl('', [Validators.required]),
-			lastname: new FormControl('', [Validators.required]),
-			email: new FormControl('', [Validators.required, Validators.email])
+			firstname: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			lastname: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			email: new FormControl('', {validators: [Validators.required, Validators.email], nonNullable: true}),
 		}
 	);
 
 	passwordForm = new FormGroup(
 		{
-			currentPassword: new FormControl('', [Validators.required]),
-			newPassword: new FormControl('', [Validators.required]),
-			confirmPassword: new FormControl('', [Validators.required])
+			currentPassword: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			newPassword: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			confirmPassword: new FormControl('', {validators: Validators.required, nonNullable: true}),
 		},
 		{
 			validators: matchingPasswords
@@ -75,7 +75,7 @@ export class UserComponent implements OnInit, OnDestroy {
 			this.loading = true;
 			const user = this.userForm.value;
 			this.userService
-				.update(this.user.handle, user)
+				.update(this.user.handle, user as User)
 				.subscribe({
 					next: () => {
 						this.alertService.success('Your profile has been updated successfully');

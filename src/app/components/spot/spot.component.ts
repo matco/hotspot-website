@@ -23,10 +23,10 @@ export class SpotComponent implements OnInit, OnDestroy {
 	spot?: Spot;
 	spotForm = new FormGroup(
 		{
-			name: new FormControl('', [Validators.required]),
-			latitude: new FormControl('', [Validators.required]),
-			longitude: new FormControl('', [Validators.required]),
-			description: new FormControl(),
+			name: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			latitude: new FormControl(0, {validators: Validators.required, nonNullable: true}),
+			longitude: new FormControl(0, {validators: Validators.required, nonNullable: true}),
+			description: new FormControl(''),
 		}
 	);
 
@@ -75,11 +75,11 @@ export class SpotComponent implements OnInit, OnDestroy {
 			this.alertService.error(error);
 		};
 		if(this.spot) {
-			this.spotService.save(this.spot.uuid, this.spotForm.value).subscribe({next: okCallback, error: errorCallback});
+			this.spotService.save(this.spot.uuid, this.spotForm.value as Spot).subscribe({next: okCallback, error: errorCallback});
 		}
 		else {
 			//TODO find a way to chain observable
-			this.spotService.create(this.spotForm.value).subscribe({
+			this.spotService.create(this.spotForm.value as Spot).subscribe({
 				next: spot => {
 					if(this.stash) {
 						this.stashService

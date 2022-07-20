@@ -20,8 +20,8 @@ export class StashComponent implements OnInit, OnDestroy {
 	stash?: Stash;
 	stashForm = new FormGroup(
 		{
-			name: new FormControl('', [Validators.required]),
-			description: new FormControl(),
+			name: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			description: new FormControl(''),
 		}
 	);
 
@@ -58,10 +58,10 @@ export class StashComponent implements OnInit, OnDestroy {
 			this.alertService.error(error);
 		};
 		if(this.stash) {
-			this.stashService.save(this.stash.uuid, this.stashForm.value).subscribe({next: okCallback, error: errorCallback});
+			this.stashService.save(this.stash.uuid, this.stashForm.value as Stash).subscribe({next: okCallback, error: errorCallback});
 		}
 		else {
-			this.stashService.create(this.stashForm.value).subscribe({next: okCallback, error: errorCallback});
+			this.stashService.create(this.stashForm.value as Stash).subscribe({next: okCallback, error: errorCallback});
 		}
 	}
 }

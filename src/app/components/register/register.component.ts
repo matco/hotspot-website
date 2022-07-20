@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../services/alert.service';
+import { User } from 'app/models/user';
 
 @Component({
 	selector: 'app-register',
@@ -15,10 +16,10 @@ export class RegisterComponent {
 
 	registerForm = new FormGroup(
 		{
-			firstname: new FormControl('', [Validators.required]),
-			lastname: new FormControl('', [Validators.required]),
-			email: new FormControl('', [Validators.required, Validators.email]),
-			password: new FormControl('', [Validators.required]),
+			firstname: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			lastname: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			email: new FormControl('', {validators: [Validators.required, Validators.email], nonNullable: true}),
+			password: new FormControl('', {validators: Validators.required, nonNullable: true})
 		}
 	);
 
@@ -30,7 +31,7 @@ export class RegisterComponent {
 	register() {
 		this.loading = true;
 		this.userService
-			.create(this.registerForm.value)
+			.create(this.registerForm.value as User)
 			.subscribe({
 				next: () => {
 					this.alertService.success('Registration successful');

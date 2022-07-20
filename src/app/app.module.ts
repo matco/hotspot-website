@@ -91,13 +91,8 @@ import { MapService } from './services/map.service';
 		SpotDeletionDialog,
 		UserDeletionDialog
 	],
-	entryComponents: [
-		StashDeletionDialog,
-		SpotDeletionDialog,
-		UserDeletionDialog
-	],
 	providers: [
-		{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 		AuthGuard,
 		AppService,
 		AlertService,
@@ -110,4 +105,4 @@ import { MapService } from './services/map.service';
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

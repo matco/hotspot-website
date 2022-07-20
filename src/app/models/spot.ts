@@ -3,5 +3,5 @@ export interface Spot {
 	name: string;
 	latitude: number;
 	longitude: number;
-	description: string;
+	description?: string;
 }
