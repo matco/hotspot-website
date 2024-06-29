@@ -11,18 +11,3 @@ h3 {
 .mat-list-item.selected {
 	background-color: #bbb;
 }
-.mat-list-item:hover .action {
-	visibility: visible;
-}
-.action {
-	position: absolute;
-	right: 0.1rem;
-	visibility: hidden;
-	opacity: 0.5;
-}
-.action:hover {
-	opacity: 1;
-}
-.action_edit {
-	right: 2rem;
-}

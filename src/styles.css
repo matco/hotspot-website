@@ -14,9 +14,6 @@ body {
 h2 {
 	font-size: 1.3rem;
 }
-a + button, button + button {
-	margin-left: 1rem !important;
-}
 
 .mat-fab.mat-fab-bottom-right {
 	position: absolute;
@@ -38,6 +35,9 @@ a + button, button + button {
 
 .content {
 	margin: 1rem;
+}
+.content a + button, .content button + button {
+	margin-left: 1rem;
 }
 
 .large-form {

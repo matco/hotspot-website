@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -64,6 +65,7 @@ import { MapService } from './services/map.service';
 		MatIconModule,
 		MatInputModule,
 		MatToolbarModule,
+		MatMenuModule,
 		MatButtonModule,
 		MatCardModule,
 		MatSidenavModule,
