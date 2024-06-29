@@ -8,8 +8,7 @@
 	"ignorePatterns": [
 		"dist/**",
 		"protractor.conf.js",
-		"karma.conf.js",
-		"src/polyfills.ts"
+		"karma.conf.js"
 	],
 	"extends": [
 		"eslint:recommended",

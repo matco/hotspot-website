@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -56,7 +56,6 @@ import { MapService } from './services/map.service';
 @NgModule({
 	imports: [
 		BrowserModule,
-		HttpClientModule,
 		RoutingModule,
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
@@ -103,7 +102,8 @@ import { MapService } from './services/map.service';
 		UserService,
 		StashService,
 		SpotService,
-		MapService
+		MapService,
+		provideHttpClient(withInterceptorsFromDi())
 	],
 	bootstrap: [AppComponent]
 })
