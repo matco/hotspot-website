@@ -26,8 +26,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
 	userForm = new FormGroup(
 		{
-			firstname: new FormControl('', {validators: Validators.required, nonNullable: true}),
-			lastname: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			name: new FormControl('', {validators: Validators.required, nonNullable: true}),
 			email: new FormControl('', {validators: [Validators.required, Validators.email], nonNullable: true}),
 		}
 	);

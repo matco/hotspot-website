@@ -4,12 +4,8 @@
 		<mat-tab label="Details">
 			<form [formGroup]="userForm" (ngSubmit)="saveDetails()" class="large-form">
 				<mat-form-field>
-					<input matInput type="text" formControlName="firstname" required placeholder="Firstname" autocomplete="given-name">
-					<mat-error *ngIf="userForm.controls['firstname'].errors?.['required']">First name is required</mat-error>
-				</mat-form-field>
-				<mat-form-field>
-					<input matInput type="text" formControlName="lastname" required placeholder="Lastname" autocomplete="family-name">
-					<mat-error *ngIf="userForm.controls['lastname'].errors?.['required']">Last name is required</mat-error>
+					<input matInput type="text" formControlName="name" required placeholder="Name" autocomplete="name">
+					<mat-error *ngIf="userForm.controls['name'].errors?.['required']">Name is required</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput type="email" formControlName="email" required placeholder="Email" autocomplete="email">
