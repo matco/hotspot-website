@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { Stash } from '../../models/stash';
 
@@ -53,9 +54,9 @@ export class StashComponent implements OnInit, OnDestroy {
 			this.alertService.success('Stash saved successfully');
 			this.router.navigate(['/home']);
 		};
-		const errorCallback = (error: string) => {
+		const errorCallback = (response: HttpErrorResponse) => {
 			this.loading = false;
-			this.alertService.error(error);
+			this.alertService.error(response.error.message);
 		};
 		if(this.stash) {
 			this.stashService.save(this.stash.uuid, this.stashForm.value as Stash).subscribe({next: okCallback, error: errorCallback});

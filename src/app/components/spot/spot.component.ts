@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { Stash } from '../../models/stash';
 import { Spot } from '../../models/spot';
@@ -70,9 +71,9 @@ export class SpotComponent implements OnInit, OnDestroy {
 			}
 			this.router.navigate(route);
 		};
-		const errorCallback = (error: string) => {
+		const errorCallback = (response: HttpErrorResponse) => {
 			this.loading = false;
-			this.alertService.error(error);
+			this.alertService.error(response.error.message);
 		};
 		if(this.spot) {
 			this.spotService.save(this.spot.uuid, this.spotForm.value as Spot).subscribe({next: okCallback, error: errorCallback});

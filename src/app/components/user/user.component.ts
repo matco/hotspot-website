@@ -80,8 +80,8 @@ export class UserComponent implements OnInit, OnDestroy {
 						this.alertService.success('Your profile has been updated successfully');
 						this.router.navigate(['/']);
 					},
-					error: error => {
-						this.alertService.error(error);
+					error: response => {
+						this.alertService.error(response.error.message);
 						this.loading = false;
 					}
 				});
@@ -123,8 +123,8 @@ export class UserComponent implements OnInit, OnDestroy {
 							this.alertService.success('Your account has been deleted successfully');
 							this.router.navigate(['/login']);
 						},
-						error: error => {
-							this.alertService.error(error);
+						error: response => {
+							this.alertService.error(response.error.message);
 						}
 					});
 			}
