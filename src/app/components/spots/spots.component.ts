@@ -1,16 +1,16 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
-import { Spot } from '../../models/spot';
-import { Stash } from '../../models/stash';
+import {Spot} from '../../models/spot';
+import {Stash} from '../../models/stash';
 
-import { AlertService } from '../../services/alert.service';
-import { SpotService } from '../../services/spot.service';
+import {AlertService} from '../../services/alert.service';
+import {SpotService} from '../../services/spot.service';
 
-import { SpotDeletionDialog } from '../../dialogs/spot_deletion.dialog';
-import { MapService } from 'app/services/map.service';
+import {SpotDeletionDialog} from '../../dialogs/spot_deletion.dialog';
+import {MapService} from 'app/services/map.service';
 
 @Component({
 	selector: 'app-spots',
@@ -36,7 +36,7 @@ export class SpotsComponent {
 					next: () => {
 						//reset selection if deleted spot was selected spot
 						if(this.selectedSpot && this.selectedSpot.uuid === spot.uuid) {
-							this.router.navigate(['/home', { stash: this.selectedStash.uuid }]);
+							this.router.navigate(['/home', {stash: this.selectedStash.uuid}]);
 						}
 						this.spots.splice(this.spots.indexOf(spot), 1);
 					},

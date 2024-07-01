@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 
-import { AlertService } from '../../services/alert.service';
-import { TokenService } from '../../services/token.service';
+import {AlertService} from '../../services/alert.service';
+import {TokenService} from '../../services/token.service';
 
 @Component({
 	selector: 'app-login',

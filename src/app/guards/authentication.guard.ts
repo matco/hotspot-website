@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { TokenService } from '../services/token.service';
+import {Injectable} from '@angular/core';
+import {Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {TokenService} from '../services/token.service';
 
 @Injectable()
 export class AuthGuard {
@@ -14,7 +14,7 @@ export class AuthGuard {
 		}
 
 		//not logged in so redirect to login page with the return url
-		this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+		this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
 		return false;
 	}
 }

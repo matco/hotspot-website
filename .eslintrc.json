@@ -27,7 +27,10 @@
 		"eol-last": "error",
 		"eqeqeq": "error",
 		"key-spacing": "error",
-		"linebreak-style": ["error", "unix"],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
 		"no-console": "off",
 		"no-multi-spaces": "error",
 		"no-multiple-empty-lines": "error",
@@ -39,10 +42,22 @@
 		"no-with": "error",
 		"prefer-const": "error",
 		"prefer-template": "error",
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"],
-		"spaced-comment": ["error", "never"],
-		"template-curly-spacing": ["error", "never"]
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"spaced-comment": [
+			"error",
+			"never"
+		],
+		"template-curly-spacing": [
+			"error",
+			"never"
+		]
 	},
 	"overrides": [
 		{

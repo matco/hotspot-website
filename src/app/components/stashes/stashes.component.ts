@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
-import { Stash } from '../../models/stash';
+import {Stash} from '../../models/stash';
 
-import { StashService } from '../../services/stash.service';
-import { AlertService } from '../../services/alert.service';
+import {StashService} from '../../services/stash.service';
+import {AlertService} from '../../services/alert.service';
 
-import { StashDeletionDialog } from '../../dialogs/stash_deletion.dialog';
+import {StashDeletionDialog} from '../../dialogs/stash_deletion.dialog';
 
 @Component({
 	selector: 'app-stashes',

@@ -1,4 +1,4 @@
-import { Spot } from './spot';
+import {Spot} from './spot';
 
 export interface Stash {
 	uuid: string;

@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { AppService } from '../services/app.service';
-import { User } from '../models/user';
-import { PasswordUpdate } from '../models/password-update';
-import { AuthInterceptor } from 'app/auth.interceptor';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {AppService} from '../services/app.service';
+import {User} from '../models/user';
+import {PasswordUpdate} from '../models/password-update';
+import {AuthInterceptor} from 'app/auth.interceptor';
 
 @Injectable()
 export class MeService {

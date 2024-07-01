@@ -1,17 +1,17 @@
-import { combineLatest, of } from 'rxjs';
-import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import {combineLatest, of} from 'rxjs';
+import {map, switchMap, distinctUntilChanged} from 'rxjs/operators';
 
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
-import { MapService } from 'app/services/map.service';
-import { GoogleMap } from '@angular/google-maps';
+import {MatDialog} from '@angular/material/dialog';
+import {MapService} from 'app/services/map.service';
+import {GoogleMap} from '@angular/google-maps';
 
-import { Stash } from '../../models/stash';
-import { Spot } from '../../models/spot';
+import {Stash} from '../../models/stash';
+import {Spot} from '../../models/spot';
 
-import { StashService } from '../../services/stash.service';
+import {StashService} from '../../services/stash.service';
 
 @Component({
 	templateUrl: './home.component.html',

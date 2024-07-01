@@ -1,14 +1,14 @@
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {HttpErrorResponse} from '@angular/common/http';
 
-import { Stash } from '../../models/stash';
+import {Stash} from '../../models/stash';
 
-import { StashService } from '../../services/stash.service';
-import { AlertService } from '../../services/alert.service';
+import {StashService} from '../../services/stash.service';
+import {AlertService} from '../../services/alert.service';
 
 @Component({
 	templateUrl: './stash.component.html'

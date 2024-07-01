@@ -1,16 +1,16 @@
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormGroup, Validators, FormControl} from '@angular/forms';
+import {HttpErrorResponse} from '@angular/common/http';
 
-import { Stash } from '../../models/stash';
-import { Spot } from '../../models/spot';
+import {Stash} from '../../models/stash';
+import {Spot} from '../../models/spot';
 
-import { SpotService } from '../../services/spot.service';
-import { StashService } from '../../services/stash.service';
-import { AlertService } from '../../services/alert.service';
+import {SpotService} from '../../services/spot.service';
+import {StashService} from '../../services/stash.service';
+import {AlertService} from '../../services/alert.service';
 
 @Component({
 	templateUrl: './spot.component.html'

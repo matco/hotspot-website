@@ -1,18 +1,18 @@
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
 
-import { User } from '../../models/user';
+import {User} from '../../models/user';
 
-import { MeService } from '../../services/me.service';
-import { UserService } from '../../services/user.service';
-import { AlertService } from '../../services/alert.service';
+import {MeService} from '../../services/me.service';
+import {UserService} from '../../services/user.service';
+import {AlertService} from '../../services/alert.service';
 
-import { UserDeletionDialog } from '../../dialogs/user_deletion.dialog';
-import { matchingPasswords } from '../../directives/matching-passwords';
+import {UserDeletionDialog} from '../../dialogs/user_deletion.dialog';
+import {matchingPasswords} from '../../directives/matching-passwords';
 
 @Component({
 	templateUrl: './user.component.html',
@@ -21,7 +21,7 @@ import { matchingPasswords } from '../../directives/matching-passwords';
 export class UserComponent implements OnInit, OnDestroy {
 
 	user?: User;
-	subscription? : Subscription;
+	subscription?: Subscription;
 	loading = false;
 
 	userForm = new FormGroup(

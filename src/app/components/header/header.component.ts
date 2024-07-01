@@ -1,11 +1,11 @@
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, RoutesRecognized} from '@angular/router';
 
-import { User } from '../../models/user';
-import { TokenService } from '../../services/token.service';
-import { MeService } from '../../services/me.service';
+import {User} from '../../models/user';
+import {TokenService} from '../../services/token.service';
+import {MeService} from '../../services/me.service';
 
 @Component({
 	selector: 'app-header',

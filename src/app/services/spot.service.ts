@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { AppService } from '../services/app.service';
-import { Spot } from '../models/spot';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {AppService} from '../services/app.service';
+import {Spot} from '../models/spot';
 
 @Injectable()
 export class SpotService {
