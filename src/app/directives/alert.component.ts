@@ -8,7 +8,6 @@ import {AlertService} from '../services/alert.service';
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.css']
 })
-
 export class AlertComponent implements OnInit {
 	alert?: Alert;
 

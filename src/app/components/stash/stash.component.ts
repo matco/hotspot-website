@@ -13,7 +13,6 @@ import {AlertService} from '../../services/alert.service';
 @Component({
 	templateUrl: './stash.component.html'
 })
-
 export class StashComponent implements OnInit, OnDestroy {
 	subscription?: Subscription;
 	loading = false;
