@@ -8,7 +8,7 @@
 			[title]="spot.name"
 			[options]="{icon: spot.uuid === selectedSpot?.uuid ? 'assets/map-marker-blue.png' : 'assets/map-marker-red.png'}"></map-marker>
 		<map-info-window *ngIf="selectedSpot">
-			<strong>{{ selectedSpot.name }}</strong>
+			<strong>{{selectedSpot.name}}</strong>
 		</map-info-window>
 	</google-map>
 </div>
