@@ -13,12 +13,21 @@
 					<mat-error *ngIf="userForm.controls['email'].errors?.['email']">Email is not valid</mat-error>
 				</mat-form-field>
 
-				<div class="button-row">
-					<a mat-raised-button [routerLink]="['/']">Cancel</a>
-					<button mat-raised-button [disabled]="loading || userForm.invalid">Save</button>
-					<button type="button" mat-raised-button [disabled]="loading" color="warn" (click)="deleteAccount()">Delete account</button>
-					<img *ngIf="loading" src="assets/loading.png" />
-				</div>
+				<menu>
+					<li>
+						<a mat-raised-button [routerLink]="['/']">Cancel</a>
+					</li>
+					<li>
+						<button mat-raised-button [disabled]="loading || userForm.invalid">
+							Save <img *ngIf="loading" src="assets/loading.png" />
+						</button>
+					</li>
+					<li>
+						<button type="button" mat-raised-button [disabled]="loading" color="warn" (click)="deleteAccount()">
+							Delete account <img *ngIf="loading" src="assets/loading.png" />
+						</button>
+					</li>
+				</menu>
 			</form>
 		</mat-tab>
 		<mat-tab label="Password">
@@ -37,11 +46,16 @@
 				</mat-form-field>
 				<mat-error *ngIf="passwordForm.controls['newPassword'].touched && passwordForm.controls['confirmPassword'].touched && passwordForm.errors?.['notIdentical']">Passwords must be identical</mat-error>
 
-				<div>
-					<a mat-raised-button [routerLink]="['/']">Cancel</a>
-					<button mat-raised-button [disabled]="loading  || passwordForm.invalid">Save</button>
-					<img *ngIf="loading" src="assets/loading.png" />
-				</div>
+				<menu>
+					<li>
+						<a mat-raised-button [routerLink]="['/']">Cancel</a>
+					</li>
+					<li>
+						<button mat-raised-button [disabled]="loading || passwordForm.invalid">
+							Save <img *ngIf="loading" src="assets/loading.png" />
+						</button>
+					</li>
+				</menu>
 			</form>
 		</mat-tab>
 	</mat-tab-group>

@@ -10,10 +10,15 @@
 			<mat-error *ngIf="stashForm.controls['description'].errors?.['required']">Description is required</mat-error>
 		</mat-form-field>
 
-		<div>
-			<a mat-raised-button [routerLink]="['/']">Cancel</a>
-			<button mat-raised-button [disabled]="loading || stashForm.invalid">Save</button>
-			<img *ngIf="loading" src="assets/loading.png" />
-		</div>
+		<menu>
+			<li>
+				<a mat-raised-button [routerLink]="['/']">Cancel</a>
+			</li>
+			<li>
+				<button mat-raised-button [disabled]="loading || stashForm.invalid">
+					Save <img *ngIf="loading" src="assets/loading.png" />
+				</button>
+			</li>
+		</menu>
 	</form>
 </div>

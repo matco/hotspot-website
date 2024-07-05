@@ -21,10 +21,15 @@
 			<input type="file" accept="image/*;capture=camera" class="form-control" name="picture" [(ngModel)]="spot.picture" #description="ngModel" placeholder="Picture">
 		</div>-->
 
-		<div>
-			<a mat-raised-button [routerLink]="['/home', {stash: stash?.uuid}]">Cancel</a>
-			<button mat-raised-button [disabled]="loading || spotForm.invalid">Save</button>
-			<img *ngIf="loading" src="assets/loading.png" />
-		</div>
+		<menu>
+			<li>
+				<a mat-raised-button [routerLink]="['/home', {stash: stash?.uuid}]">Cancel</a>
+			</li>
+			<li>
+				<button mat-raised-button [disabled]="loading || spotForm.invalid">
+					Save <img *ngIf="loading" src="assets/loading.png" />
+				</button>
+			</li>
+		</menu>
 	</form>
 </div>

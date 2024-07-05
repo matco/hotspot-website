@@ -15,10 +15,15 @@
 			<mat-error *ngIf="registerForm.controls['password'].errors?.['required']">Password is required</mat-error>
 		</mat-form-field>
 
-		<div>
-			<a mat-raised-button [routerLink]="['/login']">Cancel</a>
-			<button mat-raised-button [disabled]="loading || registerForm.invalid">Register</button>
-			<img *ngIf="loading" src="assets/loading.png" />
-		</div>
+		<menu>
+			<li>
+				<a mat-raised-button [routerLink]="['/login']">Cancel</a>
+			</li>
+			<li>
+				<button mat-raised-button [disabled]="loading || registerForm.invalid">
+					Register <img *ngIf="loading" src="assets/loading.png" />
+				</button>
+			</li>
+		</menu>
 	</form>
 </div>

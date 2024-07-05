@@ -14,6 +14,12 @@ body {
 h2 {
 	font-size: 1.3rem;
 }
+form menu {
+	list-style-type: none;
+	display: flex;
+	gap: 0.8rem;
+	justify-content: flex-end;
+}
 
 .mat-mdc-fab.mat-fab-bottom-right {
 	position: absolute;
@@ -35,9 +41,6 @@ h2 {
 
 .content {
 	margin: 1rem;
-}
-.content a + button, .content button + button {
-	margin-left: 1rem;
 }
 
 .large-form {
