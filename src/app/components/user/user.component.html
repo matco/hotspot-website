@@ -19,12 +19,12 @@
 					</li>
 					<li>
 						<button mat-raised-button [disabled]="loading || userForm.invalid">
-							Save <img *ngIf="loading" src="assets/loading.png" />
+							Save <img *ngIf="loading" src="assets/loading.png" alt="Loading" />
 						</button>
 					</li>
 					<li>
 						<button type="button" mat-raised-button [disabled]="loading" color="warn" (click)="deleteAccount()">
-							Delete account <img *ngIf="loading" src="assets/loading.png" />
+							Delete account <img *ngIf="loading" src="assets/loading.png" alt="Loading" />
 						</button>
 					</li>
 				</menu>
@@ -52,7 +52,7 @@
 					</li>
 					<li>
 						<button mat-raised-button [disabled]="loading || passwordForm.invalid">
-							Save <img *ngIf="loading" src="assets/loading.png" />
+							Save <img *ngIf="loading" src="assets/loading.png" alt="Loading" />
 						</button>
 					</li>
 				</menu>
