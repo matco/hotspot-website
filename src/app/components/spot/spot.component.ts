@@ -1,9 +1,14 @@
 import {Subscription} from 'rxjs';
 
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {FormGroup, Validators, FormControl} from '@angular/forms';
+import {Router, ActivatedRoute, RouterLink} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {FormGroup, Validators, FormControl, ReactiveFormsModule} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
+
+import {MatFormField, MatError} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatButton, MatAnchor} from '@angular/material/button';
 
 import {Stash} from '../../models/stash';
 import {Spot} from '../../models/spot';
@@ -13,7 +18,9 @@ import {StashService} from '../../services/stash.service';
 import {AlertService} from '../../services/alert.service';
 
 @Component({
-	templateUrl: './spot.component.html'
+	templateUrl: './spot.component.html',
+	standalone: true,
+	imports: [ReactiveFormsModule, MatFormField, MatInput, NgIf, MatError, MatButton, MatAnchor, RouterLink]
 })
 export class SpotComponent implements OnInit, OnDestroy {
 	subscription?: Subscription;

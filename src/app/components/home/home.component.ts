@@ -3,19 +3,24 @@ import {map, switchMap, distinctUntilChanged} from 'rxjs/operators';
 
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {NgIf, NgFor} from '@angular/common';
 
 import {MatDialog} from '@angular/material/dialog';
-import {MapService} from 'app/services/map.service';
-import {GoogleMap} from '@angular/google-maps';
+import {GoogleMap, MapMarker, MapInfoWindow} from '@angular/google-maps';
 
 import {Stash} from '../../models/stash';
 import {Spot} from '../../models/spot';
 
+import {MapService} from '../../services/map.service';
 import {StashService} from '../../services/stash.service';
+import {StashesComponent} from '../stashes/stashes.component';
+import {SpotsComponent} from '../spots/spots.component';
 
 @Component({
 	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.css']
+	styleUrls: ['./home.component.css'],
+	standalone: true,
+	imports: [NgIf, StashesComponent, SpotsComponent, GoogleMap, NgFor, MapMarker, MapInfoWindow]
 })
 export class HomeComponent implements OnInit {
 	stashes: Stash[] = [];

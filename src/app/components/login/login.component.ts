@@ -1,6 +1,11 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+
+import {MatInput} from '@angular/material/input';
+import {MatButton} from '@angular/material/button';
+import {MatFormField, MatError} from '@angular/material/form-field';
 
 import {AlertService} from '../../services/alert.service';
 import {TokenService} from '../../services/token.service';
@@ -8,7 +13,9 @@ import {TokenService} from '../../services/token.service';
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css']
+	styleUrls: ['./login.component.css'],
+	standalone: true,
+	imports: [ReactiveFormsModule, MatFormField, MatInput, NgIf, MatError, MatButton, RouterLink]
 })
 export class LoginComponent {
 

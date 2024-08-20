@@ -1,6 +1,11 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+
+import {MatFormField, MatError} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatAnchor, MatButton} from '@angular/material/button';
 
 import {UserService} from '../../services/user.service';
 import {AlertService} from '../../services/alert.service';
@@ -9,7 +14,9 @@ import {User} from 'app/models/user';
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
-	styleUrls: ['./register.component.css']
+	styleUrls: ['./register.component.css'],
+	standalone: true,
+	imports: [ReactiveFormsModule, MatFormField, MatInput, NgIf, MatError, MatAnchor, RouterLink, MatButton]
 })
 export class RegisterComponent {
 	loading = false;

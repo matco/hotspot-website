@@ -1,9 +1,15 @@
 import {Subscription} from 'rxjs';
 
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router, ActivatedRoute, RouterLink} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+
 import {MatDialog} from '@angular/material/dialog';
+import {MatTabGroup, MatTab} from '@angular/material/tabs';
+import {MatFormField, MatError} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatAnchor, MatButton} from '@angular/material/button';
 
 import {User} from '../../models/user';
 
@@ -16,7 +22,9 @@ import {matchingPasswords} from '../../directives/matching-passwords';
 
 @Component({
 	templateUrl: './user.component.html',
-	styleUrls: ['./user.component.css']
+	styleUrls: ['./user.component.css'],
+	standalone: true,
+	imports: [MatTabGroup, MatTab, ReactiveFormsModule, MatFormField, MatInput, NgIf, MatError, MatAnchor, RouterLink, MatButton]
 })
 export class UserComponent implements OnInit, OnDestroy {
 

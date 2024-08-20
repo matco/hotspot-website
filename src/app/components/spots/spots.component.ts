@@ -1,7 +1,13 @@
 import {Component, Input} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {NgFor} from '@angular/common';
 
+import {MatIconButton, MatFabAnchor} from '@angular/material/button';
+import {MatMenuTrigger, MatMenu, MatMenuItem} from '@angular/material/menu';
+import {MatIcon} from '@angular/material/icon';
+import {MatTooltip} from '@angular/material/tooltip';
 import {MatDialog} from '@angular/material/dialog';
+import {MatNavList, MatListItem, MatListItemMeta} from '@angular/material/list';
 
 import {Spot} from '../../models/spot';
 import {Stash} from '../../models/stash';
@@ -10,12 +16,14 @@ import {AlertService} from '../../services/alert.service';
 import {SpotService} from '../../services/spot.service';
 
 import {SpotDeletionDialog} from '../../dialogs/spot_deletion.dialog';
-import {MapService} from 'app/services/map.service';
+import {MapService} from '../../services/map.service';
 
 @Component({
 	selector: 'app-spots',
 	templateUrl: './spots.component.html',
-	styleUrls: ['./spots.component.css']
+	styleUrls: ['./spots.component.css'],
+	standalone: true,
+	imports: [MatNavList, NgFor, MatListItem, RouterLink, MatIconButton, MatListItemMeta, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, MatFabAnchor, MatTooltip]
 })
 export class SpotsComponent {
 	@Input() spots: Spot[] = [];
