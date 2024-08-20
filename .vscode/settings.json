@@ -1,6 +1,7 @@
 {
 	"files.exclude": {
 		"node_modules": true,
+		"package-lock.json": true,
 		"test-output": true,
 		".angular/cache": true,
 		"dist": true
