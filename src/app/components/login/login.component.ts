@@ -18,7 +18,6 @@ import {TokenService} from '@services/token.service';
 	imports: [ReactiveFormsModule, MatFormField, MatInput, NgIf, MatError, MatButton, RouterLink]
 })
 export class LoginComponent {
-
 	loading = false;
 
 	loginForm = new FormGroup(
@@ -45,5 +44,4 @@ export class LoginComponent {
 				}
 			});
 	}
-
 }

@@ -7,7 +7,6 @@ import {Spot} from '@models/spot';
 
 @Injectable()
 export class StashService {
-
 	constructor(private http: HttpClient) {}
 
 	all(): Observable<Stash[]> {

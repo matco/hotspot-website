@@ -6,7 +6,6 @@ import {Spot} from '@models/spot';
 
 @Injectable()
 export class SpotService {
-
 	constructor(private http: HttpClient) {}
 
 	all(): Observable<Spot[]> {

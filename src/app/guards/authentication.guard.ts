@@ -4,7 +4,6 @@ import {TokenService} from '@services/token.service';
 
 @Injectable()
 export class AuthGuard {
-
 	constructor(private router: Router) {}
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

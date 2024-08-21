@@ -27,7 +27,6 @@ import {matchingPasswords} from '../../directives/matching-passwords';
 	imports: [MatTabGroup, MatTab, ReactiveFormsModule, MatFormField, MatInput, NgIf, MatError, MatAnchor, RouterLink, MatButton]
 })
 export class UserComponent implements OnInit, OnDestroy {
-
 	user?: User;
 	subscription?: Subscription;
 	loading = false;

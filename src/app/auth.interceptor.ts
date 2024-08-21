@@ -7,7 +7,6 @@ import {TokenService} from '@services/token.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
 	public static HEADER_SKIP_ERROR_HANDLING = 'X-Interceptor-Skip-Error-Handling';
 
 	constructor(private router: Router) {
