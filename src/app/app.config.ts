@@ -28,6 +28,6 @@ export const appConfig: ApplicationConfig = {
 		MapService,
 		provideHttpClient(withInterceptorsFromDi()),
 		provideAnimations(),
-		provideRouter(routes),
+		provideRouter(routes)
 	]
 };

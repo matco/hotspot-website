@@ -35,7 +35,7 @@ export class UserComponent implements OnInit, OnDestroy {
 	userForm = new FormGroup(
 		{
 			name: new FormControl('', {validators: Validators.required, nonNullable: true}),
-			email: new FormControl('', {validators: [Validators.required, Validators.email], nonNullable: true}),
+			email: new FormControl('', {validators: [Validators.required, Validators.email], nonNullable: true})
 		}
 	);
 
@@ -43,7 +43,7 @@ export class UserComponent implements OnInit, OnDestroy {
 		{
 			currentPassword: new FormControl('', {validators: Validators.required, nonNullable: true}),
 			newPassword: new FormControl('', {validators: Validators.required, nonNullable: true}),
-			confirmPassword: new FormControl('', {validators: Validators.required, nonNullable: true}),
+			confirmPassword: new FormControl('', {validators: Validators.required, nonNullable: true})
 		},
 		{
 			validators: matchingPasswords
@@ -100,7 +100,7 @@ export class UserComponent implements OnInit, OnDestroy {
 		this.loading = true;
 		const passwordUpdate = {
 			currentPassword: this.passwordForm.controls['currentPassword'].value,
-			newPassword: this.passwordForm.controls['newPassword'].value,
+			newPassword: this.passwordForm.controls['newPassword'].value
 		};
 		this.meService
 			.changePassword(passwordUpdate)

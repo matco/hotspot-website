@@ -34,7 +34,7 @@ export class SpotComponent implements OnInit, OnDestroy {
 			name: new FormControl('', {validators: Validators.required, nonNullable: true}),
 			latitude: new FormControl(0, {validators: Validators.required, nonNullable: true}),
 			longitude: new FormControl(0, {validators: Validators.required, nonNullable: true}),
-			description: new FormControl(''),
+			description: new FormControl('')
 		}
 	);
 

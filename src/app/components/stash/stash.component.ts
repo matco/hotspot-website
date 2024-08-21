@@ -28,7 +28,7 @@ export class StashComponent implements OnInit, OnDestroy {
 	stashForm = new FormGroup(
 		{
 			name: new FormControl('', {validators: Validators.required, nonNullable: true}),
-			description: new FormControl(''),
+			description: new FormControl('')
 		}
 	);
 
