@@ -17,20 +17,17 @@ export class AuthInterceptor implements HttpInterceptor {
 		const flags = new Map<string, boolean>([
 			[AuthInterceptor.HEADER_SKIP_ERROR_HANDLING, false]
 		]);
-		let enhanced_request;
+		let enhanced_request = request;
 		//retrieve flags if any
 		if(request.headers.has(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING)) {
 			flags.set(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING, true);
 			const headers = request.headers.delete(AuthInterceptor.HEADER_SKIP_ERROR_HANDLING);
-			enhanced_request = request.clone({headers});
+			enhanced_request = enhanced_request.clone({headers});
 		}
 		//enhance request with jwt token
 		const token = localStorage.getItem(TokenService.tokenStorageKey);
 		if(token) {
-			enhanced_request = request.clone({headers: request.headers.set('Authorization', token)});
-		}
-		else {
-			enhanced_request = request;
+			enhanced_request = enhanced_request.clone({headers: request.headers.set('Authorization', token)});
 		}
 		const response_stream = next.handle(enhanced_request);
 		//do not handle error if the the skip error flag has been set
