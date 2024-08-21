@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AppService} from '../services/app.service';
-import {Stash} from '../models/stash';
-import {Spot} from '../models/spot';
+import {AppService} from '@services/app.service';
+import {Stash} from '@models/stash';
+import {Spot} from '@models/spot';
 
 @Injectable()
 export class StashService {

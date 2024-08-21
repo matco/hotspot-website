@@ -11,11 +11,11 @@ import {MatFormField, MatError} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatAnchor, MatButton} from '@angular/material/button';
 
-import {User} from '../../models/user';
+import {User} from '@models/user';
 
-import {MeService} from '../../services/me.service';
-import {UserService} from '../../services/user.service';
-import {AlertService} from '../../services/alert.service';
+import {MeService} from '@services/me.service';
+import {UserService} from '@services/user.service';
+import {AlertService} from '@services/alert.service';
 
 import {UserDeletionDialog} from '../../dialogs/user_deletion.dialog';
 import {matchingPasswords} from '../../directives/matching-passwords';

@@ -7,8 +7,8 @@ import {MatInput} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
 import {MatFormField, MatError} from '@angular/material/form-field';
 
-import {AlertService} from '../../services/alert.service';
-import {TokenService} from '../../services/token.service';
+import {AlertService} from '@services/alert.service';
+import {TokenService} from '@services/token.service';
 
 @Component({
 	selector: 'app-login',

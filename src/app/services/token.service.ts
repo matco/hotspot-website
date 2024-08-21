@@ -1,7 +1,7 @@
 import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {AppService} from '../services/app.service';
+import {AppService} from '@services/app.service';
 
 @Injectable()
 export class TokenService {

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgIf, NgClass} from '@angular/common';
 
-import {Alert} from '../models/alert';
-import {AlertService} from '../services/alert.service';
+import {Alert} from '@models/alert';
+import {AlertService} from '@services/alert.service';
 
 @Component({
 	selector: 'app-alert',

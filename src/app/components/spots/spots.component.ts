@@ -9,14 +9,14 @@ import {MatTooltip} from '@angular/material/tooltip';
 import {MatDialog} from '@angular/material/dialog';
 import {MatNavList, MatListItem, MatListItemMeta} from '@angular/material/list';
 
-import {Spot} from '../../models/spot';
-import {Stash} from '../../models/stash';
+import {Spot} from '@models/spot';
+import {Stash} from '@models/stash';
 
-import {AlertService} from '../../services/alert.service';
-import {SpotService} from '../../services/spot.service';
+import {AlertService} from '@services/alert.service';
+import {SpotService} from '@services/spot.service';
+import {MapService} from '@services/map.service';
 
 import {SpotDeletionDialog} from '../../dialogs/spot_deletion.dialog';
-import {MapService} from '../../services/map.service';
 
 @Component({
 	selector: 'app-spots',

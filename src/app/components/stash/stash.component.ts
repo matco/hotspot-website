@@ -10,10 +10,10 @@ import {MatFormField, MatError} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatAnchor, MatButton} from '@angular/material/button';
 
-import {Stash} from '../../models/stash';
+import {Stash} from '@models/stash';
 
-import {StashService} from '../../services/stash.service';
-import {AlertService} from '../../services/alert.service';
+import {StashService} from '@services/stash.service';
+import {AlertService} from '@services/alert.service';
 
 @Component({
 	templateUrl: './stash.component.html',

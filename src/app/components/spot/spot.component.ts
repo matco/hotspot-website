@@ -10,12 +10,12 @@ import {MatFormField, MatError} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatButton, MatAnchor} from '@angular/material/button';
 
-import {Stash} from '../../models/stash';
-import {Spot} from '../../models/spot';
+import {Stash} from '@models/stash';
+import {Spot} from '@models/spot';
 
-import {SpotService} from '../../services/spot.service';
-import {StashService} from '../../services/stash.service';
-import {AlertService} from '../../services/alert.service';
+import {SpotService} from '@services/spot.service';
+import {StashService} from '@services/stash.service';
+import {AlertService} from '@services/alert.service';
 
 @Component({
 	templateUrl: './spot.component.html',

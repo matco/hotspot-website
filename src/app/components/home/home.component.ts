@@ -8,11 +8,12 @@ import {NgIf, NgFor} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 import {GoogleMap, MapMarker, MapInfoWindow} from '@angular/google-maps';
 
-import {Stash} from '../../models/stash';
-import {Spot} from '../../models/spot';
+import {Stash} from '@models/stash';
+import {Spot} from '@models/spot';
 
-import {MapService} from '../../services/map.service';
-import {StashService} from '../../services/stash.service';
+import {MapService} from '@services/map.service';
+import {StashService} from '@services/stash.service';
+
 import {StashesComponent} from '../stashes/stashes.component';
 import {SpotsComponent} from '../spots/spots.component';
 

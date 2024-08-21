@@ -21,9 +21,17 @@
 		"noPropertyAccessFromIndexSignature": true,
 		"noUnusedLocals": true,
 		"outDir": "./dist/out-tsc",
+		"paths": {
+			"@models/*": [
+				"./app/models/*"
+			],
+			"@services/*": [
+				"./app/services/*"
+			]
+		},
 		"sourceMap": true,
 		"strict": true,
-		"target": "ESNext",
+		"target": "ESNext"
 	},
 	"angularCompilerOptions": {
 		"enableI18nLegacyMessageIdFormat": false,

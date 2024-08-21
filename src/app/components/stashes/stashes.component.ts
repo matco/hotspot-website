@@ -9,10 +9,10 @@ import {MatTooltip} from '@angular/material/tooltip';
 import {MatNavList, MatListItem, MatListItemMeta} from '@angular/material/list';
 import {MatIconButton, MatFabAnchor} from '@angular/material/button';
 
-import {Stash} from '../../models/stash';
+import {Stash} from '@models/stash';
 
-import {StashService} from '../../services/stash.service';
-import {AlertService} from '../../services/alert.service';
+import {StashService} from '@services/stash.service';
+import {AlertService} from '@services/alert.service';
 
 import {StashDeletionDialog} from '../../dialogs/stash_deletion.dialog';
 

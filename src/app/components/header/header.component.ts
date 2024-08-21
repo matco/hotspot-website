@@ -9,9 +9,9 @@ import {MatMiniFabAnchor} from '@angular/material/button';
 import {MatTooltip} from '@angular/material/tooltip';
 import {MatIcon} from '@angular/material/icon';
 
-import {User} from '../../models/user';
-import {TokenService} from '../../services/token.service';
-import {MeService} from '../../services/me.service';
+import {User} from '@models/user';
+import {TokenService} from '@services/token.service';
+import {MeService} from '@services/me.service';
 
 @Component({
 	selector: 'app-header',
